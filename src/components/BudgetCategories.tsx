@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 
 const categories = [
-  { name: "Personnel Cost", amount: 1927389, percentage: 35.1, color: "hsl(330 70% 50%)" },
-  { name: "Project Allocation", amount: 1890000, percentage: 34.42, color: "hsl(330 70% 60%)" },
-  { name: "Grants Program", amount: 875000, percentage: 15.93, color: "hsl(330 70% 70%)" },
-  { name: "Operational Costs", amount: 720000, percentage: 13.11, color: "hsl(330 70% 80%)" },
-  { name: "Legal and Compliance", amount: 79000, percentage: 1.44, color: "hsl(215 20% 55%)" },
+  { name: "Personnel Cost", amount: 1927389, percentage: 35.1, color: "hsl(280 70% 55%)" },
+  { name: "Project Allocation", amount: 1890000, percentage: 34.42, color: "hsl(300 75% 50%)" },
+  { name: "Grants Program", amount: 875000, percentage: 15.93, color: "hsl(320 80% 55%)" },
+  { name: "Operational Costs", amount: 720000, percentage: 13.11, color: "hsl(340 85% 60%)" },
+  { name: "Legal and Compliance", amount: 79000, percentage: 1.44, color: "hsl(35 95% 55%)" },
 ];
 
 export function BudgetCategories() {
@@ -34,15 +34,9 @@ export function BudgetCategories() {
         {categories.map((category, index) => (
           <div 
             key={category.name}
-            className={cn(
-              "grid grid-cols-12 gap-2 py-3 px-3 rounded-lg transition-colors",
-              index < 4 ? "bg-[hsl(330_70%_50%)]" : "bg-secondary/50",
-              index < 4 && "bg-opacity-" + (100 - index * 15)
-            )}
+            className="grid grid-cols-12 gap-2 py-3 px-3 rounded-lg transition-colors"
             style={{
-              backgroundColor: index < 4 
-                ? `hsl(330 70% ${50 + index * 8}% / ${1 - index * 0.15})` 
-                : undefined
+              backgroundColor: `hsl(${280 + index * 15} ${70 + index * 5}% ${55 + index * 5}% / ${0.25 - index * 0.03})`
             }}
           >
             <div className="col-span-6 flex items-center gap-3">

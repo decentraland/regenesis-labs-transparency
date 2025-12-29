@@ -34,39 +34,40 @@ export function BalanceChart() {
           <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(173 80% 40%)" stopOpacity={0.3} />
-                <stop offset="100%" stopColor="hsl(173 80% 40%)" stopOpacity={0} />
+                <stop offset="0%" stopColor="hsl(280 70% 55%)" stopOpacity={0.4} />
+                <stop offset="50%" stopColor="hsl(320 80% 55%)" stopOpacity={0.2} />
+                <stop offset="100%" stopColor="hsl(340 85% 60%)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <XAxis
               dataKey="month"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "hsl(215 20% 55%)", fontSize: 12 }}
+              tick={{ fill: "hsl(60 5% 60%)", fontSize: 12 }}
               dy={10}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "hsl(215 20% 55%)", fontSize: 12 }}
+              tick={{ fill: "hsl(60 5% 60%)", fontSize: 12 }}
               tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
               dx={-10}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: "hsl(222 47% 10%)",
-                border: "1px solid hsl(222 30% 18%)",
+                backgroundColor: "hsl(220 25% 12%)",
+                border: "1px solid hsl(220 20% 20%)",
                 borderRadius: "8px",
                 boxShadow: "0 4px 24px -4px rgba(0,0,0,0.5)",
               }}
-              labelStyle={{ color: "hsl(210 40% 98%)" }}
-              itemStyle={{ color: "hsl(173 80% 40%)" }}
+              labelStyle={{ color: "hsl(60 10% 98%)" }}
+              itemStyle={{ color: "hsl(320 80% 55%)" }}
               formatter={(value: number) => [`$${value.toLocaleString()}`, "Balance"]}
             />
             <Area
               type="monotone"
               dataKey="balance"
-              stroke="hsl(173 80% 40%)"
+              stroke="hsl(320 80% 55%)"
               strokeWidth={2}
               fill="url(#balanceGradient)"
             />

@@ -6,7 +6,6 @@ import {
   XAxis,
   YAxis,
   Legend,
-  Cell,
 } from "recharts";
 
 const budgetData = [
@@ -60,13 +59,13 @@ export function BudgetOverview() {
           <p className="text-xs text-muted-foreground mb-1">Total Budget</p>
           <p className="text-xl font-bold text-foreground">${(totalBudget / 1000000).toFixed(2)}M</p>
         </div>
-        <div className="rounded-lg bg-destructive/10 p-4">
+        <div className="rounded-lg bg-[hsl(340_85%_60%_/_0.15)] p-4">
           <p className="text-xs text-muted-foreground mb-1">Spent</p>
-          <p className="text-xl font-bold text-destructive">${(totalSpent / 1000000).toFixed(2)}M</p>
+          <p className="text-xl font-bold text-[hsl(340_85%_60%)]">${(totalSpent / 1000000).toFixed(2)}M</p>
         </div>
-        <div className="rounded-lg bg-success/10 p-4">
+        <div className="rounded-lg bg-[hsl(280_70%_55%_/_0.15)] p-4">
           <p className="text-xs text-muted-foreground mb-1">Remaining</p>
-          <p className="text-xl font-bold text-success">${(totalRemaining / 1000000).toFixed(2)}M</p>
+          <p className="text-xl font-bold text-[hsl(280_70%_55%)]">${(totalRemaining / 1000000).toFixed(2)}M</p>
         </div>
       </div>
 
@@ -83,7 +82,7 @@ export function BudgetOverview() {
               type="number"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "hsl(215 20% 55%)", fontSize: 11 }}
+              tick={{ fill: "hsl(60 5% 60%)", fontSize: 11 }}
               tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
             />
             <YAxis 
@@ -91,17 +90,17 @@ export function BudgetOverview() {
               dataKey="category"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "hsl(210 40% 98%)", fontSize: 12, fontWeight: 500 }}
+              tick={{ fill: "hsl(60 10% 98%)", fontSize: 12, fontWeight: 500 }}
               width={75}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: "hsl(222 47% 10%)",
-                border: "1px solid hsl(222 30% 18%)",
+                backgroundColor: "hsl(220 25% 12%)",
+                border: "1px solid hsl(220 20% 20%)",
                 borderRadius: "8px",
                 boxShadow: "0 4px 24px -4px rgba(0,0,0,0.5)",
               }}
-              labelStyle={{ color: "hsl(210 40% 98%)", fontWeight: 600, marginBottom: 4 }}
+              labelStyle={{ color: "hsl(60 10% 98%)", fontWeight: 600, marginBottom: 4 }}
               formatter={(value: number, name: string) => [
                 `$${value.toLocaleString()}`,
                 name === "spent" ? "Spent" : "Remaining"
@@ -114,7 +113,7 @@ export function BudgetOverview() {
               iconSize={8}
               wrapperStyle={{ paddingBottom: 10 }}
               formatter={(value) => (
-                <span style={{ color: "hsl(215 20% 55%)", fontSize: 12 }}>
+                <span style={{ color: "hsl(60 5% 60%)", fontSize: 12 }}>
                   {value === "spent" ? "Current Spending" : "Actual Funds"}
                 </span>
               )}
@@ -122,14 +121,14 @@ export function BudgetOverview() {
             <Bar 
               dataKey="spent" 
               stackId="budget" 
-              fill="hsl(0 65% 55%)" 
+              fill="hsl(340 85% 60%)" 
               radius={[4, 0, 0, 4]}
               name="spent"
             />
             <Bar 
               dataKey="remaining" 
               stackId="budget" 
-              fill="hsl(38 92% 50%)" 
+              fill="hsl(35 95% 55%)" 
               radius={[0, 4, 4, 0]}
               name="remaining"
             />
