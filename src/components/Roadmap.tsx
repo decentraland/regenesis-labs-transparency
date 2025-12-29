@@ -7,6 +7,7 @@ interface RoadmapItem {
   emoji: string;
   title: string;
   status: RoadmapStatus;
+  progress: number;
   description?: string;
   quarter?: string;
 }
@@ -17,6 +18,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "📝",
     title: "Establish Executive Arm Legal & Financial Structure",
     status: "done",
+    progress: 100,
     description: "Legal entity setup and financial governance framework",
     quarter: "Q2 2024",
   },
@@ -25,6 +27,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "👛",
     title: "Deploy DAO Treasury Strategy (Design)",
     status: "in-progress",
+    progress: 75,
     description: "Multi-sig wallet setup and treasury management protocols",
     quarter: "Q4 2024",
   },
@@ -33,6 +36,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "📱",
     title: "Mobile V01 Release (Social Media)",
     status: "in-progress",
+    progress: 60,
     description: "First mobile app version with social media integration",
     quarter: "Q4 2024",
   },
@@ -41,6 +45,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "⚾",
     title: "Grants Program",
     status: "not-started",
+    progress: 0,
     description: "Community grants for builders and creators",
     quarter: "Q1 2025",
   },
@@ -49,6 +54,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "📱",
     title: "Mobile V02 Release (Engagement Layer)",
     status: "in-progress",
+    progress: 35,
     description: "Enhanced engagement features and user interactions",
     quarter: "Q1 2025",
   },
@@ -57,6 +63,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "🕹️",
     title: "Launch Multiplayer Game",
     status: "in-progress",
+    progress: 45,
     description: "Interactive multiplayer gaming experience",
     quarter: "Q1 2025",
   },
@@ -65,6 +72,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "🏗️",
     title: "Enhance In-World Builder Experience",
     status: "not-started",
+    progress: 0,
     description: "Improved tools for world creation and customization",
     quarter: "Q2 2025",
   },
@@ -73,6 +81,7 @@ const roadmapItems: RoadmapItem[] = [
     emoji: "🌐",
     title: "Cross-Platform Integration",
     status: "not-started",
+    progress: 0,
     description: "Seamless experience across web, mobile, and VR",
     quarter: "Q3 2025",
   },
@@ -209,6 +218,29 @@ export function Roadmap() {
                   {item.description}
                 </p>
               )}
+              
+              {/* Progress Bar */}
+              <div className="mb-3">
+                <div className="flex items-center justify-between text-xs mb-1">
+                  <span className="text-muted-foreground">Progress</span>
+                  <span className={`font-semibold ${item.progress === 100 ? 'text-success' : item.progress > 0 ? 'text-primary' : 'text-muted-foreground'}`}>
+                    {item.progress}%
+                  </span>
+                </div>
+                <div className="h-1.5 rounded-full bg-secondary overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      item.progress === 100 
+                        ? 'bg-success' 
+                        : item.progress > 0 
+                          ? 'bg-gradient-to-r from-[hsl(280_70%_55%)] to-[hsl(320_80%_55%)]' 
+                          : 'bg-muted'
+                    }`}
+                    style={{ width: `${item.progress}%` }}
+                  />
+                </div>
+              </div>
+
               {item.quarter && (
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Calendar className="h-3 w-3" />
