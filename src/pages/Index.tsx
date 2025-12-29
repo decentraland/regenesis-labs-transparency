@@ -3,6 +3,8 @@ import { MetricCard } from "@/components/MetricCard";
 import { BalanceChart } from "@/components/BalanceChart";
 import { TransactionList } from "@/components/TransactionList";
 import { SpendingBreakdown } from "@/components/SpendingBreakdown";
+import { BudgetOverview } from "@/components/BudgetOverview";
+import { BudgetCategories } from "@/components/BudgetCategories";
 import { Wallet, TrendingUp, TrendingDown, PiggyBank } from "lucide-react";
 
 const Index = () => {
@@ -54,6 +56,12 @@ const Index = () => {
             icon={PiggyBank}
             delay={150}
           />
+        </div>
+
+        {/* Budget Overview Section */}
+        <div className="grid gap-6 lg:grid-cols-2 mb-8">
+          <BudgetOverview />
+          <BudgetCategories />
         </div>
 
         {/* Charts Section */}
