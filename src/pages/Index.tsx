@@ -4,7 +4,8 @@ import { BalanceChart } from "@/components/BalanceChart";
 import { BudgetOverview } from "@/components/BudgetOverview";
 import { BudgetCategories } from "@/components/BudgetCategories";
 import { AuditReport } from "@/components/AuditReport";
-import { Wallet, TrendingUp, TrendingDown, ExternalLink, Calendar } from "lucide-react";
+import { Roadmap } from "@/components/Roadmap";
+import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
 
 const Index = () => {
   return (
@@ -120,77 +121,7 @@ const Index = () => {
         <AuditReport />
 
         {/* Roadmap Section */}
-        <div className="mt-8 rounded-xl bg-card border border-border overflow-hidden animate-slide-up" style={{ animationDelay: "500ms" }}>
-          <div className="p-6 border-b border-border flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-primary" />
-                Roadmap
-              </h3>
-              <p className="text-sm text-muted-foreground mt-1">DCL Regenesis Labs project timeline and milestones</p>
-            </div>
-            <a
-              href="https://confirmed-copper-f3a.notion.site/2d35f96e0b7080309d90ee08eeef20b3?v=2d35f96e0b708035acb5000cf950d66e"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              <span>Open Full Roadmap</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-          
-          {/* Roadmap Preview Cards */}
-          <div className="p-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-success">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">📝</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-success/20 text-success">Done</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Establish Executive Arm Legal & Financial Structure</h4>
-            </div>
-            
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-primary">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">👛</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/20 text-primary">In Progress</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Deploy DAO Treasury Strategy (Design)</h4>
-            </div>
-            
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-primary">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">📱</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/20 text-primary">In Progress</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Mobile V01 Release (Social Media)</h4>
-            </div>
-            
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-muted-foreground">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">⚾</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">Not Started</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Grants Program</h4>
-            </div>
-            
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-primary">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">📱</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/20 text-primary">In Progress</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Mobile V02 Release (Engagement Layer)</h4>
-            </div>
-            
-            <div className="rounded-lg bg-secondary/50 p-4 border-l-4 border-primary">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">🕹️</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/20 text-primary">In Progress</span>
-              </div>
-              <h4 className="font-medium text-foreground text-sm">Launch Multiplayer Game</h4>
-            </div>
-          </div>
-        </div>
+        <Roadmap />
       </main>
     </div>
   );
