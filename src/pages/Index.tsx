@@ -10,15 +10,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Background gradient effect */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(173_80%_40%_/_0.1)_0%,_transparent_50%)] pointer-events-none" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(55_95%_55%_/_0.08)_0%,_transparent_50%)] pointer-events-none" />
       
       <Header />
       
       <main className="container relative px-4 py-8 md:px-6">
         {/* Welcome Section */}
         <div className="mb-8 animate-fade-in">
-          <h1 className="text-3xl font-bold text-foreground">Good morning, Alex</h1>
-          <p className="text-muted-foreground mt-1">Here's what's happening with your finances today.</p>
+          <h1 className="text-3xl font-bold text-foreground">DCL Regenesis Labs</h1>
+          <p className="text-muted-foreground mt-1">Here you can check how DCL Regenesis Labs is allocating the funds.</p>
         </div>
 
         {/* Metric Cards */}
