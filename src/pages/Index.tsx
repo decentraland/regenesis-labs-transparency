@@ -21,7 +21,7 @@ const Index = () => {
         </div>
 
         {/* Metric Cards */}
-        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-3 mb-8">
+        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
           <MetricCard
             title="Total Balance"
             value="$47,520"
@@ -46,6 +46,45 @@ const Index = () => {
             icon={TrendingDown}
             delay={100}
           />
+        </div>
+
+        {/* Wallet Cards */}
+        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 mb-8">
+          <div className="rounded-xl bg-card border border-border p-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-muted-foreground">Operational Wallet</h3>
+              <Wallet className="h-5 w-5 text-primary" />
+            </div>
+            <p className="text-2xl font-bold text-foreground mb-3">$25,340</p>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Stable Coin (USDC)</span>
+                <span className="font-medium text-foreground">15,000 USDC</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">$MANA</span>
+                <span className="font-medium text-foreground">24,500 MANA</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-card border border-border p-6 animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-muted-foreground">Treasury Wallet</h3>
+              <Wallet className="h-5 w-5 text-primary" />
+            </div>
+            <p className="text-2xl font-bold text-foreground mb-3">$122,180</p>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Stable Coin (USDC)</span>
+                <span className="font-medium text-foreground">85,000 USDC</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">$MANA</span>
+                <span className="font-medium text-foreground">88,000 MANA</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Budget Overview Section */}
