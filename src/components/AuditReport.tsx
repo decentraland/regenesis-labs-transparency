@@ -1,4 +1,4 @@
-import { FileText, CheckCircle, AlertCircle, Clock } from "lucide-react";
+import { FileText, CheckCircle, AlertCircle, Clock, ExternalLink } from "lucide-react";
 
 const auditReports = [
   {
@@ -7,6 +7,7 @@ const auditReports = [
     date: "Dec 15, 2024",
     status: "completed",
     auditor: "Deloitte",
+    pdfUrl: "https://example.com/audits/q4-2024-financial.pdf",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const auditReports = [
     date: "Nov 28, 2024",
     status: "completed",
     auditor: "CertiK",
+    pdfUrl: "https://example.com/audits/smart-contract-security.pdf",
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const auditReports = [
     date: "Jan 15, 2025",
     status: "pending",
     auditor: "KPMG",
+    pdfUrl: null,
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ const auditReports = [
     date: "Feb 01, 2025",
     status: "in-progress",
     auditor: "PwC",
+    pdfUrl: null,
   },
 ];
 
@@ -82,9 +86,23 @@ export const AuditReport = () => {
                 </div>
               </div>
 
-              <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${status.className}`}>
-                <StatusIcon className="h-4 w-4" />
-                <span className="text-sm font-medium">{status.label}</span>
+              <div className="flex items-center gap-4">
+                {report.pdfUrl && (
+                  <a
+                    href={report.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm text-primary hover:underline"
+                  >
+                    <span>View PDF</span>
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
+
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${status.className}`}>
+                  <StatusIcon className="h-4 w-4" />
+                  <span className="text-sm font-medium">{status.label}</span>
+                </div>
               </div>
             </div>
           );
