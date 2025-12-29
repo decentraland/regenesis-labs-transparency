@@ -118,6 +118,22 @@ const Index = () => {
 
         {/* Audit Report Section */}
         <AuditReport />
+
+        {/* Roadmap Section - Notion Embed */}
+        <div className="mt-8 rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "500ms" }}>
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-foreground">Roadmap</h3>
+            <p className="text-sm text-muted-foreground">DCL Regenesis Labs project timeline and milestones</p>
+          </div>
+          <div className="w-full overflow-hidden rounded-lg" style={{ height: "600px" }}>
+            <iframe
+              src="https://confirmed-copper-f3a.notion.site/2d35f96e0b7080309d90ee08eeef20b3?v=2d35f96e0b708035acb5000cf950d66e"
+              className="w-full h-full border-0"
+              title="DCL Regenesis Labs Roadmap"
+              allow="fullscreen"
+            />
+          </div>
+        </div>
       </main>
     </div>
   );
