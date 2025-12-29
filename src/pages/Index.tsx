@@ -3,6 +3,7 @@ import { MetricCard } from "@/components/MetricCard";
 import { BalanceChart } from "@/components/BalanceChart";
 import { BudgetOverview } from "@/components/BudgetOverview";
 import { BudgetCategories } from "@/components/BudgetCategories";
+import { AuditReport } from "@/components/AuditReport";
 import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
 
 const Index = () => {
@@ -114,6 +115,9 @@ const Index = () => {
             </button>
           </div>
         </div>
+
+        {/* Audit Report Section */}
+        <AuditReport />
       </main>
     </div>
   );
