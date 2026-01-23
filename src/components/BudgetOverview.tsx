@@ -7,45 +7,43 @@ import {
   YAxis,
   Legend,
 } from "recharts";
-
-const budgetData = [
-  {
-    category: "Personnel",
-    spent: 1421293,
-    remaining: 506096,
-    budget: 1927389,
-  },
-  {
-    category: "Projects",
-    spent: 194773,
-    remaining: 1695227,
-    budget: 1890000,
-  },
-  {
-    category: "Operations",
-    spent: 54333,
-    remaining: 665667,
-    budget: 720000,
-  },
-  {
-    category: "Legal",
-    spent: 34335,
-    remaining: 44665,
-    budget: 79000,
-  },
-  {
-    category: "Grants",
-    spent: 0,
-    remaining: 875000,
-    budget: 875000,
-  },
-];
-
-const totalBudget = budgetData.reduce((acc, item) => acc + item.budget, 0);
-const totalSpent = budgetData.reduce((acc, item) => acc + item.spent, 0);
-const totalRemaining = totalBudget - totalSpent;
+import { useDashboardData } from "@/hooks/useDashboardData";
+import { Loader2 } from "lucide-react";
 
 export function BudgetOverview() {
+  const { data, isLoading, error } = useDashboardData();
+
+  // Transform dashboard data into chart format, sorted by allocation descending
+  const budgetData = data?.categories
+    .slice()
+    .sort((a, b) => b.budgetAllocation - a.budgetAllocation)
+    .map((cat) => ({
+      category: cat.category.replace(' Cost', '').replace(' Allocation', '').replace(' Program', '').replace(' and Compliance', ''),
+      spent: cat.realSpending,
+      remaining: cat.actualFunds,
+      budget: cat.budgetRequested,
+    })) ?? [];
+
+  const totalBudget = budgetData.reduce((acc, item) => acc + item.budget, 0);
+  const totalSpent = budgetData.reduce((acc, item) => acc + item.spent, 0);
+  const totalRemaining = budgetData.reduce((acc, item) => acc + item.remaining, 0);
+
+  if (isLoading) {
+    return (
+      <div className="rounded-xl bg-card border border-border p-6 animate-slide-up flex items-center justify-center h-[450px]" style={{ animationDelay: "200ms" }}>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
+        <p className="text-destructive">Failed to load budget data</p>
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
       <div className="mb-6">
@@ -72,20 +70,20 @@ export function BudgetOverview() {
       {/* Stacked Bar Chart */}
       <div className="h-[280px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart 
-            data={budgetData} 
+          <BarChart
+            data={budgetData}
             layout="vertical"
             margin={{ top: 10, right: 30, left: 80, bottom: 10 }}
             barSize={28}
           >
-            <XAxis 
+            <XAxis
               type="number"
               axisLine={false}
               tickLine={false}
               tick={{ fill: "hsl(60 5% 60%)", fontSize: 11 }}
               tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
             />
-            <YAxis 
+            <YAxis
               type="category"
               dataKey="category"
               axisLine={false}
@@ -106,7 +104,7 @@ export function BudgetOverview() {
                 name === "spent" ? "Spent" : "Remaining"
               ]}
             />
-            <Legend 
+            <Legend
               verticalAlign="top"
               align="right"
               iconType="circle"
@@ -118,17 +116,17 @@ export function BudgetOverview() {
                 </span>
               )}
             />
-            <Bar 
-              dataKey="spent" 
-              stackId="budget" 
-              fill="hsl(340 85% 60%)" 
+            <Bar
+              dataKey="spent"
+              stackId="budget"
+              fill="hsl(340 85% 60%)"
               radius={[4, 0, 0, 4]}
               name="spent"
             />
-            <Bar 
-              dataKey="remaining" 
-              stackId="budget" 
-              fill="hsl(35 95% 55%)" 
+            <Bar
+              dataKey="remaining"
+              stackId="budget"
+              fill="hsl(35 95% 55%)"
               radius={[0, 4, 4, 0]}
               name="remaining"
             />

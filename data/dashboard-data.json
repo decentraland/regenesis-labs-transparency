@@ -1,0 +1,77 @@
+{
+  "lastUpdated": "2026-01-23T01:11:02.884Z",
+  "categories": [
+    {
+      "id": "grants-program",
+      "category": "Grants Program",
+      "budgetRequested": 875000,
+      "realSpending": 0,
+      "totalBudgetForecasted": 875000,
+      "availableFunds": 875000,
+      "availableFundsPercent": 100,
+      "budgetAllocation": 15.99,
+      "budgetSpentPercent": 0,
+      "actualFunds": 875000
+    },
+    {
+      "id": "legal-and-compliance",
+      "category": "Legal and Compliance",
+      "budgetRequested": 79000,
+      "realSpending": 33232.5,
+      "totalBudgetForecasted": 26952.5,
+      "availableFunds": 45767.5,
+      "availableFundsPercent": 57.93,
+      "budgetAllocation": 1.44,
+      "budgetSpentPercent": 42.07,
+      "actualFunds": 45767.5
+    },
+    {
+      "id": "operational-costs",
+      "category": "Operational Costs",
+      "budgetRequested": 700000,
+      "realSpending": 35923.37,
+      "totalBudgetForecasted": 89018.9,
+      "availableFunds": 664076.63,
+      "availableFundsPercent": 94.87,
+      "budgetAllocation": 12.79,
+      "budgetSpentPercent": 5.13,
+      "actualFunds": 664076.63
+    },
+    {
+      "id": "personnel-cost",
+      "category": "Personnel Cost",
+      "budgetRequested": 1927389,
+      "realSpending": 603379.52,
+      "totalBudgetForecasted": 1814679.6,
+      "availableFunds": 1324009.48,
+      "availableFundsPercent": 68.69,
+      "budgetAllocation": 35.23,
+      "budgetSpentPercent": 31.31,
+      "actualFunds": 1324009.48
+    },
+    {
+      "id": "project-allocation",
+      "category": "Project Allocation",
+      "budgetRequested": 1890000,
+      "realSpending": 200439.17,
+      "totalBudgetForecasted": 319449.52,
+      "availableFunds": 1689560.83,
+      "availableFundsPercent": 89.39,
+      "budgetAllocation": 34.54,
+      "budgetSpentPercent": 10.61,
+      "actualFunds": 1689560.83
+    }
+  ],
+  "grandTotal": {
+    "id": "grand-total",
+    "category": "Grand Total",
+    "budgetRequested": 5471389,
+    "realSpending": 872974.56,
+    "totalBudgetForecasted": 3125100.52,
+    "availableFunds": 4598414.44,
+    "availableFundsPercent": 84.04,
+    "budgetAllocation": 0,
+    "budgetSpentPercent": 15.96,
+    "actualFunds": 4598414.44
+  }
+}

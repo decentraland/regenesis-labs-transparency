@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# DCL Regenesis Labs Dashboard
 
-## Project info
+A React dashboard for tracking Decentraland Regenesis Labs treasury balances, budget allocation, and DeFi positions.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Development
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+npm install       # Install dependencies
+npm run dev       # Start dev server (port 8080)
+npm run build     # Production build
+npm run lint      # Run ESLint
 ```
 
-**Edit a file directly in GitHub**
+## Data Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The dashboard displays data fetched by automated scripts that run daily via GitHub Actions.
 
-**Use GitHub Codespaces**
+### Fetch Balances
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run fetch-balances
+```
 
-## What technologies are used for this project?
+Fetches wallet token balances and DeFi positions:
+- Token balances (ETH, USDC, USDT, MANA, etc.)
+- Morpho lending positions
+- Merkl unclaimed rewards
+- USD values via CoinGecko prices
 
-This project is built with:
+Output: `data/balances.json`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Fetch Dashboard Data
 
-## How can I deploy this project?
+```bash
+npm run fetch-dashboard
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Fetches budget and roadmap data from Google Sheets.
 
-## Can I connect a custom domain to my Lovable project?
+Output: `data/dashboard-data.json`
 
-Yes, you can!
+## Monthly Snapshots
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+On the 1st of each month, a snapshot of the balance data is automatically saved for historical tracking.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**How it works:**
+- The `fetch-balances` script checks if it's the 1st of the month (UTC)
+- If so, it saves a copy of the current data to `data/snapshots/MM-YYYY.json`
+- No workflow changes needed - runs on existing daily cron
+
+**File structure:**
+```
+data/
+├── balances.json          # Current balances (updated daily)
+├── dashboard-data.json    # Current budget data (updated daily)
+└── snapshots/
+    ├── 01-2026.json       # January 2026 snapshot
+    ├── 02-2026.json       # February 2026 snapshot
+    └── ...
+```
+
+Each snapshot contains the full balance data from the 1st of that month, allowing you to track treasury variations over time.
+
+## Project Structure
+
+```
+src/
+├── components/ui/     # shadcn/ui primitives
+├── components/        # Dashboard components (Header, MetricCard, etc.)
+├── pages/             # Route components
+├── hooks/             # Custom React hooks (useBalanceData, useDashboardData)
+└── lib/               # Utilities
+
+scripts/
+├── lib/               # Shared utilities (output.ts)
+├── sheets/            # Google Sheets data fetching
+└── web3/              # Blockchain data fetching
+    ├── config/        # Wallet addresses, token configs
+    └── lib/           # Token, Morpho, Merkl helpers
+
+data/                  # JSON data files (gitignored in production)
+```
+
+## Tech Stack
+
+- **Frontend:** React 18, TypeScript, Vite
+- **Styling:** Tailwind CSS, shadcn/ui
+- **Data:** Direct RPC calls (viem), CoinGecko API, Google Sheets API
+- **Automation:** GitHub Actions (daily cron)
+
+## Deployment
+
+Built with [Lovable](https://lovable.dev). Changes sync bidirectionally with lovable.dev.
