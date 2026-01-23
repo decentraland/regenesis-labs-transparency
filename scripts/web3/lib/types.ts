@@ -19,6 +19,7 @@ export interface TokenBalance {
 export interface MorphoPosition {
   marketId: string;
   marketName: string;
+  underlyingSymbol: string;
   supplyAssets: string;
   supplyAssetsFormatted: string;
   borrowAssets: string;
@@ -26,6 +27,7 @@ export interface MorphoPosition {
   collateral: string;
   collateralFormatted: string;
   netValue: number | null;
+  usdValue: number | null;
 }
 
 export interface MerklReward {

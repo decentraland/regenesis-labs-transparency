@@ -44,11 +44,20 @@ async function main() {
       console.log(`   Found ${merklRewards.length} Merkl reward(s)`);
     }
 
-    // Calculate total USD value
+    // Calculate total USD value (tokens + DeFi positions)
     const tokenUsdTotal = tokenBalances.reduce(
       (sum, t) => sum + (t.usdValue ?? 0),
       0
     );
+    const morphoUsdTotal = morphoPositions.reduce(
+      (sum, p) => sum + (p.usdValue ?? 0),
+      0
+    );
+    const merklUsdTotal = merklRewards.reduce(
+      (sum, r) => sum + (r.usdValue ?? 0),
+      0
+    );
+    const walletTotalUsd = tokenUsdTotal + morphoUsdTotal + merklUsdTotal;
 
     walletBalances.push({
       address: wallet.address,
@@ -58,10 +67,17 @@ async function main() {
         morpho: morphoPositions,
         merklRewards,
       },
-      totalUsdValue: Math.round(tokenUsdTotal * 100) / 100,
+      totalUsdValue: Math.round(walletTotalUsd * 100) / 100,
     });
 
-    console.log(`   Total token value: $${tokenUsdTotal.toLocaleString()}\n`);
+    console.log(`   Token value: $${tokenUsdTotal.toLocaleString()}`);
+    if (morphoUsdTotal > 0) {
+      console.log(`   Morpho value: $${morphoUsdTotal.toLocaleString()}`);
+    }
+    if (merklUsdTotal > 0) {
+      console.log(`   Merkl rewards: $${merklUsdTotal.toLocaleString()}`);
+    }
+    console.log(`   Total wallet value: $${walletTotalUsd.toLocaleString()}\n`);
   }
 
   // Calculate portfolio total

@@ -156,16 +156,22 @@ export async function getMorphoPositions(
         assets = assetResult.result as bigint;
       }
 
+      // Calculate USD value (USDC/USDT are ~$1 each)
+      const assetsFormatted = formatUnits(assets, vault.underlyingDecimals);
+      const usdValue = parseFloat(assetsFormatted);
+
       positions.push({
         marketId: vault.address,
         marketName: vault.name,
+        underlyingSymbol: vault.underlyingSymbol,
         supplyAssets: assets.toString(),
-        supplyAssetsFormatted: formatUnits(assets, vault.underlyingDecimals),
+        supplyAssetsFormatted: assetsFormatted,
         borrowAssets: '0',
         borrowAssetsFormatted: '0',
         collateral: shares.toString(),
         collateralFormatted: formatUnits(shares, 18), // Vault shares are 18 decimals
-        netValue: null, // Will be calculated with prices
+        netValue: usdValue,
+        usdValue: usdValue,
       });
     }
   } catch (error) {

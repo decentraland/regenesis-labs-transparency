@@ -37,6 +37,13 @@ const formatTokenAmount = (amount: string, symbol: string) => {
   return `0 ${symbol}`;
 };
 
+const SectionHeader = ({ label, subtotal, isFirst = false }: { label: string; subtotal: number; isFirst?: boolean }) => (
+  <div className={`flex items-center justify-between py-3 px-3 -mx-3 bg-muted/30 rounded ${isFirst ? 'mt-0' : 'mt-4'}`}>
+    <span className="text-xs font-bold uppercase tracking-wider text-foreground">{label}</span>
+    <span className="text-sm font-semibold text-primary">{formatUsdValue(subtotal)}</span>
+  </div>
+);
+
 export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -50,6 +57,11 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
   const hasMorpho = (wallet?.defi.morpho.length ?? 0) > 0;
   const hasRewards = (wallet?.defi.merklRewards.length ?? 0) > 0;
   const hasMoreContent = remainingTokens.length > 0 || hasMorpho || hasRewards;
+
+  // Calculate section subtotals
+  const tokenTotal = sortedTokens.reduce((sum, t) => sum + (t.usdValue ?? 0), 0);
+  const morphoTotal = wallet?.defi.morpho.reduce((sum, p) => sum + (p.usdValue ?? 0), 0) ?? 0;
+  const rewardsTotal = wallet?.defi.merklRewards.reduce((sum, r) => sum + (r.usdValue ?? 0), 0) ?? 0;
 
   const TokenRow = ({ symbol, amount, usdValue }: { symbol: string; amount: string; usdValue: number | null }) => (
     <div className="flex items-center justify-between py-2">
@@ -87,30 +99,35 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
         {isLoading ? '...' : wallet ? formatUsdValue(wallet.totalUsdValue) : 'N/A'}
       </p>
 
-      {/* Top 3 Tokens */}
-      <div className="divide-y divide-border/50">
-        {topTokens.map((token) => (
-          <TokenRow
-            key={token.symbol}
-            symbol={`$${token.symbol}`}
-            amount={token.balanceFormatted}
-            usdValue={token.usdValue}
-          />
-        ))}
-      </div>
+      {/* Wallet Tokens Section */}
+      {sortedTokens.length > 0 && (
+        <>
+          <SectionHeader label="Wallet" subtotal={tokenTotal} isFirst />
+          <div className="divide-y divide-border/50 mt-1">
+            {topTokens.map((token) => (
+              <TokenRow
+                key={token.symbol}
+                symbol={`$${token.symbol}`}
+                amount={token.balanceFormatted}
+                usdValue={token.usdValue}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Expandable Section */}
       {hasMoreContent && (
         <>
           <div
-            className={`overflow-hidden transition-all duration-300 ease-in-out ${
-              isExpanded ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+            className={`-mx-3 px-3 overflow-hidden transition-all duration-300 ease-in-out ${
+              isExpanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             {/* Remaining Tokens */}
             {remainingTokens.length > 0 && (
-              <div className="pt-4 mt-2 border-t border-border">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-4 mb-2">
                   Other Tokens
                 </p>
                 <div className="divide-y divide-border/50">
@@ -128,19 +145,24 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
 
             {/* Morpho Positions */}
             {wallet && hasMorpho && (
-              <div className="pt-4 mt-2 border-t border-border">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                  Morpho Positions
-                </p>
-                <div className="space-y-2">
+              <div>
+                <SectionHeader label="Morpho Positions" subtotal={morphoTotal} />
+                <div className="divide-y divide-border/50 mt-1">
                   {wallet.defi.morpho.map((position) => (
-                    <div key={position.marketId} className="flex items-center justify-between py-1">
+                    <div key={position.marketId} className="flex items-center justify-between py-2">
                       <span className="text-sm text-muted-foreground">
                         {position.marketName}
                       </span>
-                      <span className="text-sm font-medium text-foreground tabular-nums">
-                        {parseFloat(position.supplyAssetsFormatted).toLocaleString(undefined, { maximumFractionDigits: 2 })}
-                      </span>
+                      <div className="text-right">
+                        <div className="text-sm font-medium text-foreground tabular-nums">
+                          {parseFloat(position.supplyAssetsFormatted).toLocaleString(undefined, { maximumFractionDigits: 2 })} {position.underlyingSymbol}
+                        </div>
+                        {position.usdValue !== null && (
+                          <div className="text-xs text-muted-foreground">
+                            {formatUsdValue(position.usdValue)}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -149,11 +171,9 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
 
             {/* Merkl Rewards */}
             {wallet && hasRewards && (
-              <div className="pt-4 mt-2 border-t border-border">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                  Unclaimed Rewards
-                </p>
-                <div className="divide-y divide-border/50">
+              <div>
+                <SectionHeader label="Unclaimed Rewards" subtotal={rewardsTotal} />
+                <div className="divide-y divide-border/50 mt-1">
                   {wallet.defi.merklRewards.map((reward) => (
                     <TokenRow
                       key={reward.token}
