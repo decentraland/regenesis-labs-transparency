@@ -1,14 +1,45 @@
 import { cn } from "@/lib/utils";
+import { useDashboardData } from "@/hooks/useDashboardData";
+import { Loader2 } from "lucide-react";
 
-const categories = [
-  { name: "Personnel Cost", amount: 1927389, percentage: 35.1, color: "hsl(280 70% 55%)" },
-  { name: "Project Allocation", amount: 1890000, percentage: 34.42, color: "hsl(300 75% 50%)" },
-  { name: "Grants Program", amount: 875000, percentage: 15.93, color: "hsl(320 80% 55%)" },
-  { name: "Operational Costs", amount: 720000, percentage: 13.11, color: "hsl(340 85% 60%)" },
-  { name: "Legal and Compliance", amount: 79000, percentage: 1.44, color: "hsl(35 95% 55%)" },
+const categoryColors = [
+  "hsl(280 70% 55%)",
+  "hsl(300 75% 50%)",
+  "hsl(320 80% 55%)",
+  "hsl(340 85% 60%)",
+  "hsl(35 95% 55%)",
 ];
 
 export function BudgetCategories() {
+  const { data, isLoading, error } = useDashboardData();
+
+  // Transform dashboard data into display format, sorted by allocation descending
+  const categories = data?.categories
+    .slice()
+    .sort((a, b) => b.budgetAllocation - a.budgetAllocation)
+    .map((cat, index) => ({
+      name: cat.category,
+      amount: cat.budgetRequested,
+      percentage: cat.budgetAllocation,
+      color: categoryColors[index % categoryColors.length],
+    })) ?? [];
+
+  if (isLoading) {
+    return (
+      <div className="rounded-xl bg-card border border-border p-6 animate-slide-up flex items-center justify-center h-[400px]" style={{ animationDelay: "250ms" }}>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "250ms" }}>
+        <p className="text-destructive">Failed to load budget categories</p>
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "250ms" }}>
       <div className="mb-4">
@@ -32,7 +63,7 @@ export function BudgetCategories() {
       {/* Table Rows */}
       <div className="space-y-1">
         {categories.map((category, index) => (
-          <div 
+          <div
             key={category.name}
             className="grid grid-cols-12 gap-2 py-3 px-3 rounded-lg transition-colors"
             style={{
@@ -40,7 +71,7 @@ export function BudgetCategories() {
             }}
           >
             <div className="col-span-6 flex items-center gap-3">
-              <div 
+              <div
                 className="w-2 h-2 rounded-full flex-shrink-0"
                 style={{ backgroundColor: category.color }}
               />
@@ -65,7 +96,7 @@ export function BudgetCategories() {
       {/* Progress Bar */}
       <div className="mt-6">
         <div className="h-3 rounded-full overflow-hidden flex bg-secondary">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <div
               key={category.name}
               className="h-full transition-all duration-500"
