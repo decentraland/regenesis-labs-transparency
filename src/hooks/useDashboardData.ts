@@ -1,9 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-// Use local data in development, GitHub Pages in production
-const DATA_BASE_URL = import.meta.env.DEV
-  ? '/data'
-  : 'https://decentraland.github.io/dclregenesislabsdashboard';
+const DASHBOARD_URL = 'https://decentraland.github.io/regenesis-labs-transparency/dashboard-data.json';
 
 export interface BudgetCategory {
   id: string;
@@ -25,7 +22,7 @@ export interface DashboardData {
 }
 
 async function fetchDashboardData(): Promise<DashboardData> {
-  const response = await fetch(`${DATA_BASE_URL}/dashboard-data.json`);
+  const response = await fetch(DASHBOARD_URL);
   if (!response.ok) {
     throw new Error(`Failed to fetch dashboard data: ${response.statusText}`);
   }

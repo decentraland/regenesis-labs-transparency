@@ -1,9 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-// Use local data in development, GitHub Pages in production
-const DATA_BASE_URL = import.meta.env.DEV
-  ? '/data'
-  : 'https://decentraland.github.io/dclregenesislabsdashboard';
+const BALANCES_URL = 'https://decentraland.github.io/regenesis-labs-transparency/balances.json';
 
 export interface TokenBalance {
   symbol: string;
@@ -54,7 +51,7 @@ export interface BalanceSnapshot {
 }
 
 async function fetchBalanceData(): Promise<BalanceSnapshot> {
-  const response = await fetch(`${DATA_BASE_URL}/balances.json`);
+  const response = await fetch(BALANCES_URL);
   if (!response.ok) {
     throw new Error(`Failed to fetch balance data: ${response.statusText}`);
   }
