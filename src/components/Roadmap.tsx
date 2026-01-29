@@ -1,91 +1,5 @@
-import { Calendar, ExternalLink, CheckCircle, Clock, Circle } from "lucide-react";
-
-type RoadmapStatus = "done" | "in-progress" | "not-started";
-
-interface RoadmapItem {
-  id: number;
-  emoji: string;
-  title: string;
-  status: RoadmapStatus;
-  progress: number;
-  description?: string;
-  quarter?: string;
-}
-
-const roadmapItems: RoadmapItem[] = [
-  {
-    id: 1,
-    emoji: "📝",
-    title: "Establish Executive Arm Legal & Financial Structure",
-    status: "done",
-    progress: 100,
-    description: "Legal entity setup and financial governance framework",
-    quarter: "Q2 2024",
-  },
-  {
-    id: 2,
-    emoji: "👛",
-    title: "Deploy DAO Treasury Strategy (Design)",
-    status: "in-progress",
-    progress: 75,
-    description: "Multi-sig wallet setup and treasury management protocols",
-    quarter: "Q4 2024",
-  },
-  {
-    id: 3,
-    emoji: "📱",
-    title: "Mobile V01 Release (Social Media)",
-    status: "in-progress",
-    progress: 60,
-    description: "First mobile app version with social media integration",
-    quarter: "Q4 2024",
-  },
-  {
-    id: 4,
-    emoji: "⚾",
-    title: "Grants Program",
-    status: "not-started",
-    progress: 0,
-    description: "Community grants for builders and creators",
-    quarter: "Q1 2025",
-  },
-  {
-    id: 5,
-    emoji: "📱",
-    title: "Mobile V02 Release (Engagement Layer)",
-    status: "in-progress",
-    progress: 35,
-    description: "Enhanced engagement features and user interactions",
-    quarter: "Q1 2025",
-  },
-  {
-    id: 6,
-    emoji: "🕹️",
-    title: "Launch Multiplayer Game",
-    status: "in-progress",
-    progress: 45,
-    description: "Interactive multiplayer gaming experience",
-    quarter: "Q1 2025",
-  },
-  {
-    id: 7,
-    emoji: "🏗️",
-    title: "Enhance In-World Builder Experience",
-    status: "not-started",
-    progress: 0,
-    description: "Improved tools for world creation and customization",
-    quarter: "Q2 2025",
-  },
-  {
-    id: 8,
-    emoji: "🌐",
-    title: "Cross-Platform Integration",
-    status: "not-started",
-    progress: 0,
-    description: "Seamless experience across web, mobile, and VR",
-    quarter: "Q3 2025",
-  },
-];
+import { Calendar, ExternalLink, CheckCircle, Clock, Circle, Loader2 } from "lucide-react";
+import { useRoadmapData, type RoadmapStatus } from "@/hooks/useRoadmapData";
 
 const getStatusConfig = (status: RoadmapStatus) => {
   switch (status) {
@@ -117,10 +31,31 @@ const getStatusConfig = (status: RoadmapStatus) => {
 };
 
 export function Roadmap() {
+  const { data, isLoading, error } = useRoadmapData();
+
+  if (isLoading) {
+    return (
+      <div className="mt-8 rounded-xl bg-card border border-border p-6 animate-slide-up flex items-center justify-center h-[400px]" style={{ animationDelay: "500ms" }}>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="mt-8 rounded-xl bg-card border border-border p-6 animate-slide-up" style={{ animationDelay: "500ms" }}>
+        <p className="text-destructive">Failed to load roadmap data</p>
+      </div>
+    );
+  }
+
+  const roadmapItems = data?.items ?? [];
   const doneCount = roadmapItems.filter((item) => item.status === "done").length;
   const inProgressCount = roadmapItems.filter((item) => item.status === "in-progress").length;
   const notStartedCount = roadmapItems.filter((item) => item.status === "not-started").length;
-  const progress = Math.round((doneCount / roadmapItems.length) * 100);
+  const progress = roadmapItems.length > 0
+    ? Math.round((doneCount / roadmapItems.length) * 100)
+    : 0;
 
   return (
     <div className="mt-8 rounded-xl bg-card border border-border overflow-hidden animate-slide-up" style={{ animationDelay: "500ms" }}>
@@ -213,9 +148,9 @@ export function Roadmap() {
               <h4 className="font-medium text-foreground text-sm mb-2 group-hover:text-primary transition-colors">
                 {item.title}
               </h4>
-              {item.description && (
+              {item.phase && (
                 <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-                  {item.description}
+                  {item.phase}
                 </p>
               )}
               
@@ -241,10 +176,9 @@ export function Roadmap() {
                 </div>
               </div>
 
-              {item.quarter && (
+              {item.priority && (
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Calendar className="h-3 w-3" />
-                  <span>{item.quarter}</span>
+                  <span>{item.priority}</span>
                 </div>
               )}
             </div>

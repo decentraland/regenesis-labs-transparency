@@ -34,6 +34,11 @@ jobs:
         env:
           SHEET_CSV_URL: ${{ vars.SHEET_CSV_URL }}
 
+      - name: Fetch roadmap data
+        run: npm run fetch-roadmap
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
