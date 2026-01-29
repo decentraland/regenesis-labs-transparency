@@ -39,6 +39,24 @@ Fetches budget and roadmap data from Google Sheets.
 
 Output: `data/dashboard-data.json`
 
+### Fetch Roadmap Data
+
+```bash
+npm run fetch-roadmap
+```
+
+Fetches roadmap initiatives from a Notion database.
+
+**Required environment variable:**
+- `NOTION_TOKEN` - Notion integration API token
+
+Output: `data/roadmap.json`
+
+**Setup:**
+1. Create a Notion integration at [notion.so/my-integrations](https://www.notion.so/my-integrations)
+2. Share the roadmap database with the integration
+3. Add `NOTION_TOKEN` as a GitHub repository secret
+
 ## Monthly Snapshots
 
 On the 1st of each month, a snapshot of the balance data is automatically saved for historical tracking.
@@ -53,6 +71,7 @@ On the 1st of each month, a snapshot of the balance data is automatically saved 
 data/
 ├── balances.json          # Current balances (updated daily)
 ├── dashboard-data.json    # Current budget data (updated daily)
+├── roadmap.json           # Current roadmap data (updated daily)
 └── snapshots/
     ├── 01-2026.json       # January 2026 snapshot
     ├── 02-2026.json       # February 2026 snapshot
@@ -68,11 +87,12 @@ src/
 ├── components/ui/     # shadcn/ui primitives
 ├── components/        # Dashboard components (Header, MetricCard, etc.)
 ├── pages/             # Route components
-├── hooks/             # Custom React hooks (useBalanceData, useDashboardData)
+├── hooks/             # Custom React hooks (useBalanceData, useDashboardData, useRoadmapData)
 └── lib/               # Utilities
 
 scripts/
 ├── lib/               # Shared utilities (output.ts)
+├── notion/            # Notion data fetching (roadmap)
 ├── sheets/            # Google Sheets data fetching
 └── web3/              # Blockchain data fetching
     ├── config/        # Wallet addresses, token configs
