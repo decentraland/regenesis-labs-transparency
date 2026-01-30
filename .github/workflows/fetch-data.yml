@@ -32,7 +32,8 @@ jobs:
       - name: Fetch dashboard data
         run: npm run fetch-dashboard
         env:
-          SHEET_CSV_URL: ${{ vars.SHEET_CSV_URL }}
+          SPREADSHEET_ID: ${{ vars.SPREADSHEET_ID }}
+          SHEET_GID: ${{ vars.SHEET_GID }}
 
       - name: Fetch roadmap data
         run: npm run fetch-roadmap

@@ -9,10 +9,13 @@
 
 import { writeDataFile } from '../lib/output.js';
 
-// Published CSV URL for "Dashboard - High level expenditures" sheet
-// Can be overridden via SHEET_CSV_URL environment variable (e.g., in GitHub Actions)
-const DEFAULT_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRdk5b3yvdxydtzTbjKATZJpgGMfg1_4ByL51S3ypKfgrA5VvxiRZVP8ltCoRoRWMVrXHHVuiKWxU92/pub?gid=703579216&single=true&output=csv';
-const SHEET_CSV_URL = process.env.SHEET_CSV_URL || DEFAULT_SHEET_URL;
+// CSV export URL for the spreadsheet
+// Can be overridden via environment variables (e.g., in GitHub Actions)
+// SPREADSHEET_ID: The Google Sheets document ID
+// SHEET_GID: The sheet tab ID (0 = first sheet)
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID
+const SHEET_GID = process.env.SHEET_GID
+const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=${SHEET_GID}`;
 
 interface BudgetCategory {
   id: string;
@@ -70,21 +73,27 @@ function parseCSVLine(line: string): string[] {
 }
 
 function rowToBudgetCategory(row: string[]): BudgetCategory {
+  // Column mapping:
+  // A=id, B=category, C=budgetRequested, D=realSpending, E=totalBudgetForecasted,
+  // F=SKIP (Total Budget committed), G=availableFunds, H=availableFundsPercent,
+  // I=budgetAllocation, J=budgetSpentPercent, K=actualFunds
   return {
     id: row[0] || '',
     category: row[1] || '',
     budgetRequested: parseMoneyValue(row[2]),
     realSpending: parseMoneyValue(row[3]),
     totalBudgetForecasted: parseMoneyValue(row[4]),
-    availableFunds: parseMoneyValue(row[5]),
-    availableFundsPercent: parsePercentValue(row[6]),
-    budgetAllocation: parsePercentValue(row[7]),
-    budgetSpentPercent: parsePercentValue(row[8]),
-    actualFunds: parseMoneyValue(row[9]),
+    // row[5] skipped (Total Budget committed)
+    availableFunds: parseMoneyValue(row[6]),
+    availableFundsPercent: parsePercentValue(row[7]),
+    budgetAllocation: parsePercentValue(row[8]),
+    budgetSpentPercent: parsePercentValue(row[9]),
+    actualFunds: parseMoneyValue(row[10]),
   };
 }
 
 async function fetchDashboardData(): Promise<DashboardData> {
+  if (!SPREADSHEET_ID) throw new Error('Invalid spreadsheet id')
   const response = await fetch(SHEET_CSV_URL, {
     redirect: 'follow',
   });
@@ -96,9 +105,9 @@ async function fetchDashboardData(): Promise<DashboardData> {
   const csvText = await response.text();
   const lines = csvText.split('\n').filter(line => line.trim());
 
-  // Skip header rows (row 1 is title, row 2 is empty, row 3 is headers)
-  // Data starts at row 4
-  const dataLines = lines.slice(3);
+  // Skip header row (row 1 has column headers)
+  // Data starts at row 2
+  const dataLines = lines.slice(1);
 
   const categories: BudgetCategory[] = [];
   let grandTotal: BudgetCategory | null = null;
