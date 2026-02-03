@@ -6,33 +6,9 @@ const auditReports = [
     title: "Q4 2024 Financial Audit",
     date: "Dec 15, 2024",
     status: "completed",
-    auditor: "Deloitte",
-    pdfUrl: "https://example.com/audits/q4-2024-financial.pdf",
-  },
-  {
-    id: 2,
-    title: "Smart Contract Security Audit",
-    date: "Nov 28, 2024",
-    status: "completed",
-    auditor: "CertiK",
-    pdfUrl: "https://example.com/audits/smart-contract-security.pdf",
-  },
-  {
-    id: 3,
-    title: "Q1 2025 Treasury Review",
-    date: "Jan 15, 2025",
-    status: "pending",
-    auditor: "KPMG",
-    pdfUrl: null,
-  },
-  {
-    id: 4,
-    title: "Annual Compliance Report",
-    date: "Feb 01, 2025",
-    status: "in-progress",
-    auditor: "PwC",
-    pdfUrl: null,
-  },
+    auditor: "",
+    pdfUrl: "https://drive.google.com/file/d/1BzD4cxAc3mGAjp01NrB7UvHWz8AD_C_f/view?usp=sharing",
+  }
 ];
 
 const statusConfig = {
