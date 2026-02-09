@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-08T15:04:05.910Z",
+  "lastUpdated": "2026-02-09T15:17:30.645Z",
   "categories": [
     {
       "id": "grants-program",
@@ -29,13 +29,13 @@
       "id": "operational-costs",
       "category": "Operational Costs",
       "budgetRequested": 700000,
-      "realSpending": 43813.37,
+      "realSpending": 47583.6,
       "totalBudgetForecasted": 89018.9,
-      "availableFunds": 656186.63,
-      "availableFundsPercent": 93.74,
+      "availableFunds": 652416.4,
+      "availableFundsPercent": 93.2,
       "budgetAllocation": 12.79,
-      "budgetSpentPercent": 6.26,
-      "actualFunds": 656186.63
+      "budgetSpentPercent": 6.8,
+      "actualFunds": 652416.4
     },
     {
       "id": "personnel-cost",
@@ -54,7 +54,7 @@
       "category": "Project Allocation",
       "budgetRequested": 1890000,
       "realSpending": 206775.17,
-      "totalBudgetForecasted": 319449.52,
+      "totalBudgetForecasted": 459259.52,
       "availableFunds": 1683224.83,
       "availableFundsPercent": 89.06,
       "budgetAllocation": 34.54,
@@ -66,12 +66,12 @@
     "id": "grand-total",
     "category": "Grand Total",
     "budgetRequested": 5471389,
-    "realSpending": 990906.56,
-    "totalBudgetForecasted": 3125100.52,
-    "availableFunds": 4480482.44,
-    "availableFundsPercent": 81.89,
+    "realSpending": 994676.79,
+    "totalBudgetForecasted": 3264910.52,
+    "availableFunds": 4476712.21,
+    "availableFundsPercent": 81.82,
     "budgetAllocation": 0,
-    "budgetSpentPercent": 18.11,
-    "actualFunds": 4480482.44
+    "budgetSpentPercent": 18.18,
+    "actualFunds": 4476712.21
   }
 }
