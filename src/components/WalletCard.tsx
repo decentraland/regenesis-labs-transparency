@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Wallet, Loader2, ChevronDown, ChevronUp } from "lucide-react";
 import type { WalletBalance } from "@/hooks/useBalanceData";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface WalletCardProps {
   wallet: WalletBalance | undefined;
@@ -18,6 +24,21 @@ const formatUsdValue = (value: number) => {
   }
   return `$${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
 };
+
+const formatFullUsdValue = (value: number) => {
+  return `$${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+};
+
+const UsdValue = ({ value, className }: { value: number; className?: string }) => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <span className={className}>{formatUsdValue(value)}</span>
+    </TooltipTrigger>
+    <TooltipContent>
+      <span className="font-mono">{formatFullUsdValue(value)}</span>
+    </TooltipContent>
+  </Tooltip>
+);
 
 const formatTokenAmount = (amount: string, symbol: string) => {
   const num = parseFloat(amount);
@@ -40,7 +61,7 @@ const formatTokenAmount = (amount: string, symbol: string) => {
 const SectionHeader = ({ label, subtotal, isFirst = false }: { label: string; subtotal: number; isFirst?: boolean }) => (
   <div className={`flex items-center justify-between py-3 px-3 -mx-3 bg-muted/30 rounded ${isFirst ? 'mt-0' : 'mt-4'}`}>
     <span className="text-xs font-bold uppercase tracking-wider text-foreground">{label}</span>
-    <span className="text-sm font-semibold text-primary">{formatUsdValue(subtotal)}</span>
+    <UsdValue value={subtotal} className="text-sm font-semibold text-primary cursor-default" />
   </div>
 );
 
@@ -52,11 +73,9 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
     .slice()
     .sort((a, b) => (b.usdValue ?? 0) - (a.usdValue ?? 0)) ?? [];
 
-  const topTokens = sortedTokens.slice(0, 3);
-  const remainingTokens = sortedTokens.slice(3);
   const hasMorpho = (wallet?.defi.morpho.length ?? 0) > 0;
   const hasRewards = (wallet?.defi.merklRewards.length ?? 0) > 0;
-  const hasMoreContent = remainingTokens.length > 0 || hasMorpho || hasRewards;
+  const hasMoreContent = sortedTokens.length > 0 || hasMorpho || hasRewards;
 
   // Calculate section subtotals
   const tokenTotal = sortedTokens.reduce((sum, t) => sum + (t.usdValue ?? 0), 0);
@@ -71,15 +90,14 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
           {formatTokenAmount(amount, symbol.replace('$', ''))}
         </div>
         {usdValue !== null && (
-          <div className="text-xs text-muted-foreground">
-            {formatUsdValue(usdValue)}
-          </div>
+          <UsdValue value={usdValue} className="text-xs text-muted-foreground cursor-default" />
         )}
       </div>
     </div>
   );
 
   return (
+    <TooltipProvider>
     <div
       className="rounded-xl bg-card border border-border p-6 animate-fade-in"
       style={{ animationDelay: `${delay}ms` }}
@@ -96,27 +114,25 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
 
       {/* Total Value */}
       <p className="text-2xl font-bold text-foreground mb-4">
-        {isLoading ? '...' : wallet ? formatUsdValue(wallet.totalUsdValue) : 'N/A'}
+        {isLoading ? '...' : wallet ? <UsdValue value={wallet.totalUsdValue} className="cursor-default" /> : 'N/A'}
       </p>
 
-      {/* Wallet Tokens Section */}
-      {sortedTokens.length > 0 && (
+      {/* Collapsed view - Summary only */}
+      {!isExpanded && (
         <>
-          <SectionHeader label="Wallet" subtotal={tokenTotal} isFirst />
-          <div className="divide-y divide-border/50 mt-1">
-            {topTokens.map((token) => (
-              <TokenRow
-                key={token.symbol}
-                symbol={`$${token.symbol}`}
-                amount={token.balanceFormatted}
-                usdValue={token.usdValue}
-              />
-            ))}
-          </div>
+          {sortedTokens.length > 0 && (
+            <SectionHeader label="Tokens" subtotal={tokenTotal} isFirst />
+          )}
+          {hasMorpho && (
+            <SectionHeader label="Positions" subtotal={morphoTotal} />
+          )}
+          {hasRewards && (
+            <SectionHeader label="Unclaimed Rewards" subtotal={rewardsTotal} />
+          )}
         </>
       )}
 
-      {/* Expandable Section */}
+      {/* Expanded view - All details */}
       {hasMoreContent && (
         <>
           <div
@@ -124,14 +140,12 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
               isExpanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            {/* Remaining Tokens */}
-            {remainingTokens.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-4 mb-2">
-                  Other Tokens
-                </p>
-                <div className="divide-y divide-border/50">
-                  {remainingTokens.map((token) => (
+            {/* Wallet Tokens */}
+            {sortedTokens.length > 0 && (
+              <>
+                <SectionHeader label="Tokens" subtotal={tokenTotal} isFirst />
+                <div className="divide-y divide-border/50 mt-1">
+                  {sortedTokens.map((token) => (
                     <TokenRow
                       key={token.symbol}
                       symbol={`$${token.symbol}`}
@@ -140,13 +154,13 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
                     />
                   ))}
                 </div>
-              </div>
+              </>
             )}
 
             {/* Morpho Positions */}
             {wallet && hasMorpho && (
-              <div>
-                <SectionHeader label="Morpho Positions" subtotal={morphoTotal} />
+              <>
+                <SectionHeader label="Positions" subtotal={morphoTotal} />
                 <div className="divide-y divide-border/50 mt-1">
                   {wallet.defi.morpho.map((position) => (
                     <div key={position.marketId} className="flex items-center justify-between py-2">
@@ -158,20 +172,18 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
                           {parseFloat(position.supplyAssetsFormatted).toLocaleString(undefined, { maximumFractionDigits: 2 })} {position.underlyingSymbol}
                         </div>
                         {position.usdValue !== null && (
-                          <div className="text-xs text-muted-foreground">
-                            {formatUsdValue(position.usdValue)}
-                          </div>
+                          <UsdValue value={position.usdValue} className="text-xs text-muted-foreground cursor-default" />
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </>
             )}
 
-            {/* Merkl Rewards */}
+            {/* Unclaimed Rewards */}
             {wallet && hasRewards && (
-              <div>
+              <>
                 <SectionHeader label="Unclaimed Rewards" subtotal={rewardsTotal} />
                 <div className="divide-y divide-border/50 mt-1">
                   {wallet.defi.merklRewards.map((reward) => (
@@ -183,7 +195,7 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
                     />
                   ))}
                 </div>
-              </div>
+              </>
             )}
           </div>
 
@@ -207,5 +219,6 @@ export function WalletCard({ wallet, title, isLoading, delay = 0 }: WalletCardPr
         </>
       )}
     </div>
+    </TooltipProvider>
   );
 }
