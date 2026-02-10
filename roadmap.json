@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-09T15:17:33.923Z",
+  "lastUpdated": "2026-02-10T15:23:43.504Z",
   "items": [
     {
       "id": 1,
@@ -52,19 +52,11 @@
       "title": "Decentraland Mobile Client V02",
       "status": "in-progress",
       "progress": 0,
-      "priority": "Medium",
+      "priority": "High",
       "phase": "Phase 2 – First Outputs"
     },
     {
       "id": 7,
-      "emoji": "🌐",
-      "title": "Bevy - Web Client - Phase 1",
-      "status": "in-progress",
-      "progress": 0,
-      "phase": "Phase 2 – First Outputs"
-    },
-    {
-      "id": 8,
       "emoji": "📌",
       "title": "Fix Empty LAND Problem (Pilot)",
       "status": "not-started",
@@ -73,7 +65,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 9,
+      "id": 8,
       "emoji": "🕹️",
       "title": "Deploy Multiplayer Game",
       "status": "in-progress",
@@ -82,7 +74,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 10,
+      "id": 9,
       "emoji": "⚾",
       "title": "Grants Program",
       "status": "in-progress",
@@ -91,7 +83,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 11,
+      "id": 10,
       "emoji": "📌",
       "title": "Enhance the In-World Builder Experience",
       "status": "not-started",
@@ -100,7 +92,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 12,
+      "id": 11,
       "emoji": "📌",
       "title": "Expand Decentraland Creators Reward Program",
       "status": "not-started",
@@ -109,7 +101,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 13,
+      "id": 12,
       "emoji": "🎁",
       "title": "Thematic Hackathons",
       "status": "in-progress",
@@ -118,7 +110,7 @@
       "phase": "Phase 3 – Experiences & Content"
     },
     {
-      "id": 14,
+      "id": 13,
       "emoji": "📌",
       "title": "AI-Driven Guided Tour",
       "status": "not-started",
@@ -127,7 +119,7 @@
       "phase": "Phase 4 – Scale & Experiments"
     },
     {
-      "id": 15,
+      "id": 14,
       "emoji": "📌",
       "title": "Events for New Audiences",
       "status": "not-started",
@@ -136,7 +128,7 @@
       "phase": "Phase 4 – Scale & Experiments"
     },
     {
-      "id": 16,
+      "id": 15,
       "emoji": "🏐",
       "title": "Scale DCL Worlds Ecosystem",
       "status": "not-started",
@@ -145,7 +137,7 @@
       "phase": "Phase 4 – Scale & Experiments"
     },
     {
-      "id": 17,
+      "id": 16,
       "emoji": "🏝️",
       "title": "Incentive Program for Active LAND",
       "status": "not-started",
@@ -154,18 +146,12 @@
       "phase": "Phase 4 – Scale & Experiments"
     },
     {
-      "id": 18,
+      "id": 17,
       "emoji": "🌐",
-      "title": "Bevy - Web Client - Phase 3",
-      "status": "not-started",
-      "progress": 0
-    },
-    {
-      "id": 19,
-      "emoji": "🌐",
-      "title": "Bevy - Web Client - Phase 2",
-      "status": "not-started",
-      "progress": 0
+      "title": "Bevy Web Client",
+      "status": "in-progress",
+      "progress": 0,
+      "priority": "High"
     }
   ]
 }
