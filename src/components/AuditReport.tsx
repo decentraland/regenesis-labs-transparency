@@ -3,7 +3,7 @@ import { FileText, CheckCircle, AlertCircle, Clock, ExternalLink } from "lucide-
 const auditReports = [
   {
     id: 1,
-    title: "Q4 2024 Financial Audit",
+    title: "Q3 2024 Financial Audit",
     date: "Dec 15, 2024",
     status: "completed",
     auditor: "",
@@ -34,7 +34,10 @@ export const AuditReport = () => {
     <div className="rounded-xl bg-card border border-border p-6 animate-fade-in" style={{ animationDelay: "400ms" }}>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-foreground">Audit Report</h3>
+          <h3
+            className="text-lg font-semibold text-foreground hover:text-primary transition-colors cursor-pointer"
+            onClick={() => history.replaceState(null, '', '#audits')}
+          >Audit Report</h3>
           <p className="text-sm text-muted-foreground">Recent audits and reviews</p>
         </div>
         <button className="text-sm text-primary hover:underline">View All</button>

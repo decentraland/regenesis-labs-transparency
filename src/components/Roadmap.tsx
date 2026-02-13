@@ -63,7 +63,10 @@ export function Roadmap() {
       <div className="p-6 border-b border-border">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+            <h3
+              className="text-lg font-semibold text-foreground hover:text-primary transition-colors flex items-center gap-2 cursor-pointer"
+              onClick={() => history.replaceState(null, '', '#roadmap')}
+            >
               <Calendar className="h-5 w-5 text-primary" />
               Roadmap
             </h3>

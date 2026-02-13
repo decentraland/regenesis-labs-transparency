@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { MetricCard } from "@/components/MetricCard";
 import { BudgetOverview } from "@/components/BudgetOverview";
@@ -21,6 +22,18 @@ const Index = () => {
   const operationalWallet = balanceData?.wallets.find(w => w.label === 'Operational');
   const treasuryWallet = balanceData?.wallets.find(w => w.label === 'Treasury');
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Background gradient effect */}
@@ -35,49 +48,55 @@ const Index = () => {
           <p className="text-muted-foreground mt-1">Here you can check how DCL Regenesis Labs is allocating the funds.</p>
         </div>
 
-        {/* Metric Cards */}
-        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
-          <MetricCard
-            title="Total Portfolio Value"
-            value={isLoading ? 'Loading...' : balanceData ? formatUsdValue(balanceData.totalPortfolioValue) : 'N/A'}
-            change={balanceData ? `Updated ${new Date(balanceData.timestamp).toLocaleDateString()}` : ''}
-            changeType="neutral"
-            icon={Wallet}
-            delay={0}
-          />
-          <MetricCard
-            title="Operational Wallet"
-            value={isLoading ? 'Loading...' : operationalWallet ? formatUsdValue(operationalWallet.totalUsdValue) : 'N/A'}
-            change=""
-            changeType="neutral"
-            icon={TrendingUp}
-            delay={50}
-          />
-          <MetricCard
-            title="Treasury Wallet"
-            value={isLoading ? 'Loading...' : treasuryWallet ? formatUsdValue(treasuryWallet.totalUsdValue) : 'N/A'}
-            change=""
-            changeType="neutral"
-            icon={TrendingDown}
-            delay={100}
-          />
-        </div>
+        <section id="treasury" className="scroll-mt-20">
+          <h2
+            className="text-xl font-semibold text-foreground hover:text-primary transition-colors cursor-pointer inline-block mb-4"
+            onClick={() => history.replaceState(null, '', '#treasury')}
+          >Treasury Overview</h2>
+          {/* Metric Cards */}
+          <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            <MetricCard
+              title="Total Portfolio Value"
+              value={isLoading ? 'Loading...' : balanceData ? formatUsdValue(balanceData.totalPortfolioValue) : 'N/A'}
+              change={balanceData ? `Updated ${new Date(balanceData.timestamp).toLocaleDateString()}` : ''}
+              changeType="neutral"
+              icon={Wallet}
+              delay={0}
+            />
+            <MetricCard
+              title="Operational Wallet"
+              value={isLoading ? 'Loading...' : operationalWallet ? formatUsdValue(operationalWallet.totalUsdValue) : 'N/A'}
+              change=""
+              changeType="neutral"
+              icon={TrendingUp}
+              delay={50}
+            />
+            <MetricCard
+              title="Treasury Wallet"
+              value={isLoading ? 'Loading...' : treasuryWallet ? formatUsdValue(treasuryWallet.totalUsdValue) : 'N/A'}
+              change=""
+              changeType="neutral"
+              icon={TrendingDown}
+              delay={100}
+            />
+          </div>
 
-        {/* Wallet Cards */}
-        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 items-start mb-8">
-          <WalletCard
-            wallet={operationalWallet}
-            title="Operational Wallet"
-            isLoading={isLoading}
-            delay={150}
-          />
-          <WalletCard
-            wallet={treasuryWallet}
-            title="Treasury Wallet"
-            isLoading={isLoading}
-            delay={200}
-          />
-        </div>
+          {/* Wallet Cards */}
+          <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 items-start mb-8">
+            <WalletCard
+              wallet={operationalWallet}
+              title="Operational Wallet"
+              isLoading={isLoading}
+              delay={150}
+            />
+            <WalletCard
+              wallet={treasuryWallet}
+              title="Treasury Wallet"
+              isLoading={isLoading}
+              delay={200}
+            />
+          </div>
+        </section>
 
         {/* Budget Overview Section */}
         <div className="grid gap-6 lg:grid-cols-2 mb-8">
@@ -85,12 +104,15 @@ const Index = () => {
           <BudgetCategories />
         </div>
 
-        {/* Quick Actions Card */}
         {/* Audit Report Section */}
-        <AuditReport />
+        <section id="audits" className="scroll-mt-20">
+          <AuditReport />
+        </section>
 
         {/* Roadmap Section */}
-        <Roadmap />
+        <section id="roadmap" className="scroll-mt-20">
+          <Roadmap />
+        </section>
         {/* <div className="mb-8 flex justify-center">
           <div className="rounded-xl bg-card border border-border p-6 animate-slide-up w-full max-w-md" style={{ animationDelay: "350ms" }}>
             <div className="mb-6">
