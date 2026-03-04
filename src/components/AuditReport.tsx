@@ -4,10 +4,18 @@ const auditReports = [
   {
     id: 1,
     title: "Q3 2024 Financial Audit",
-    date: "Dec 15, 2024",
+    date: "Dec 15, 2025",
     status: "completed",
     auditor: "",
     pdfUrl: "https://drive.google.com/file/d/1BzD4cxAc3mGAjp01NrB7UvHWz8AD_C_f/view?usp=sharing",
+  },
+  {
+    id: 2,
+    title: "Q4 2024 Financial Audit",
+    date: "Mar 4, 2025",
+    status: "completed",
+    auditor: "",
+    pdfUrl: "https://drive.google.com/file/d/1m58ohwV3b5UZtJulKXrG961LbU7VwWtV/view?usp=sharing",
   }
 ];
 
