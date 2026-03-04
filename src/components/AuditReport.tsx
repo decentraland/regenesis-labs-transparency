@@ -3,7 +3,7 @@ import { FileText, CheckCircle, AlertCircle, Clock, ExternalLink } from "lucide-
 const auditReports = [
   {
     id: 1,
-    title: "Q3 2024 Financial Audit",
+    title: "Q3 2025 Financial Audit",
     date: "Dec 15, 2025",
     status: "completed",
     auditor: "",
@@ -11,7 +11,7 @@ const auditReports = [
   },
   {
     id: 2,
-    title: "Q4 2024 Financial Audit",
+    title: "Q4 2025 Financial Audit",
     date: "Mar 4, 2025",
     status: "completed",
     auditor: "",
