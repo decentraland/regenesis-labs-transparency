@@ -104,6 +104,11 @@ const Index = () => {
           <BudgetCategories />
         </div>
 
+        {/* Grants Program Section (MANA) */}
+        <div className="mb-8">
+          <GrantsProgram />
+        </div>
+
         {/* Audit Report Section */}
         <section id="audits" className="scroll-mt-20">
           <AuditReport />
