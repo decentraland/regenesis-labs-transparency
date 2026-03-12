@@ -8,6 +8,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
             <img src={dclLogo} alt="DCL Regenesis Labs" className="h-10 w-10 rounded-lg" />
+            <span className="text-lg font-bold text-foreground hidden sm:block">DCL Regensis Labs</span>
           </div>
         </div>
 
