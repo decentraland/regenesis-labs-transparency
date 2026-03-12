@@ -1,4 +1,4 @@
-import { Bell, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 import dclLogo from "@/assets/dcl-logo.png";
 
 export function Header() {
@@ -13,13 +13,6 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2 md:gap-4">
-          <button className="relative rounded-lg p-2.5 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-            <Bell className="h-5 w-5" />
-            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
-          </button>
-          <button className="rounded-lg p-2.5 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-            <Settings className="h-5 w-5" />
-          </button>
           <div className="flex items-center gap-3 pl-2 md:pl-4 border-l border-border">
             <div className="hidden md:block text-right">
               <p className="text-sm font-medium text-foreground">DCL Regenesis</p>
