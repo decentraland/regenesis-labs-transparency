@@ -15,6 +15,7 @@ export function BudgetOverview() {
 
   // Transform dashboard data into chart format, sorted by allocation descending
   const budgetData = data?.categories
+    .filter((cat) => cat.id !== 'grants-program')
     .slice()
     .sort((a, b) => b.budgetAllocation - a.budgetAllocation)
     .map((cat) => ({

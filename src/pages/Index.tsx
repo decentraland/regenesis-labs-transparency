@@ -4,6 +4,7 @@ import { MetricCard } from "@/components/MetricCard";
 import { BudgetOverview } from "@/components/BudgetOverview";
 import { BudgetCategories } from "@/components/BudgetCategories";
 import { AuditReport } from "@/components/AuditReport";
+import { GrantsProgram } from "@/components/GrantsProgram";
 import { Roadmap } from "@/components/Roadmap";
 import { WalletCard } from "@/components/WalletCard";
 import { useBalanceData } from "@/hooks/useBalanceData";
@@ -101,6 +102,11 @@ const Index = () => {
         <div className="grid gap-6 lg:grid-cols-2 mb-8">
           <BudgetOverview />
           <BudgetCategories />
+        </div>
+
+        {/* Grants Program Section (MANA) */}
+        <div className="mb-8">
+          <GrantsProgram />
         </div>
 
         {/* Audit Report Section */}
