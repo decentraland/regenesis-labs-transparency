@@ -44,8 +44,7 @@ const Index = () => {
       <main className="container relative px-4 py-8 md:px-6">
         {/* Welcome Section */}
         <div className="mb-8 animate-fade-in">
-          <h1 className="text-3xl font-bold text-foreground">DCL Regensis Labs</h1>
-          <p className="text-muted-foreground mt-1">Here you can check how DCL Regenesis Labs is allocating the funds.</p>
+          <p className="text-muted-foreground">Here you can check how DCL Regenesis Labs is allocating the funds.</p>
         </div>
 
         <section id="treasury" className="scroll-mt-20">
