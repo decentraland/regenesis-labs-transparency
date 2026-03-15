@@ -19,9 +19,9 @@ export function BudgetOverview() {
     .slice()
     .sort((a, b) => b.budgetAllocation - a.budgetAllocation)
     .map((cat) => ({
-      category: cat.category.replace(' Cost', '').replace(' Allocation', '').replace(' Program', '').replace(' and Compliance', ''),
+      category: cat.category.replace(/ (Cost|Allocation|Program|and Compliance)/g, ''),
       spent: cat.realSpending,
-      remaining: cat.actualFunds,
+      remaining: cat.availableFunds,
       budget: cat.budgetRequested,
     })) ?? [];
 
@@ -52,7 +52,6 @@ export function BudgetOverview() {
         <p className="text-sm text-muted-foreground">Budget allocation by category</p>
       </div>
 
-      {/* Summary Stats */}
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="rounded-lg bg-secondary/50 p-4">
           <p className="text-xs text-muted-foreground mb-1">Total Budget</p>
@@ -68,7 +67,6 @@ export function BudgetOverview() {
         </div>
       </div>
 
-      {/* Stacked Bar Chart */}
       <div className="h-[280px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
