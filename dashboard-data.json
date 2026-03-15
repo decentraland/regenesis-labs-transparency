@@ -1,17 +1,19 @@
 {
-  "lastUpdated": "2026-03-09T15:17:07.034Z",
+  "lastUpdated": "2026-03-15T00:59:40.491Z",
   "categories": [
     {
       "id": "grants-program",
       "category": "Grants Program",
-      "budgetRequested": 875000,
+      "budgetRequested": 0,
       "realSpending": 0,
-      "totalBudgetForecasted": 875000,
-      "availableFunds": 875000,
+      "totalBudgetForecasted": 0,
+      "availableFunds": 0,
       "availableFundsPercent": 100,
       "budgetAllocation": 15.99,
       "budgetSpentPercent": 0,
-      "actualFunds": 875000
+      "budgetRequestedMana": 1923076.92,
+      "actualSpendingMana": 0,
+      "actualFundsMana": 1923076.92
     },
     {
       "id": "legal-and-compliance",
@@ -23,7 +25,9 @@
       "availableFundsPercent": 39.97,
       "budgetAllocation": 1.44,
       "budgetSpentPercent": 60.03,
-      "actualFunds": 31572.5
+      "budgetRequestedMana": 0,
+      "actualSpendingMana": 0,
+      "actualFundsMana": 0
     },
     {
       "id": "operational-costs",
@@ -35,7 +39,9 @@
       "availableFundsPercent": 93.2,
       "budgetAllocation": 12.79,
       "budgetSpentPercent": 6.8,
-      "actualFunds": 652416.4
+      "budgetRequestedMana": 0,
+      "actualSpendingMana": 0,
+      "actualFundsMana": 0
     },
     {
       "id": "personnel-cost",
@@ -47,7 +53,9 @@
       "availableFundsPercent": 64.05,
       "budgetAllocation": 35.23,
       "budgetSpentPercent": 35.95,
-      "actualFunds": 1234498.48
+      "budgetRequestedMana": 0,
+      "actualSpendingMana": 0,
+      "actualFundsMana": 0
     },
     {
       "id": "project-allocation",
@@ -59,19 +67,23 @@
       "availableFundsPercent": 89.06,
       "budgetAllocation": 34.54,
       "budgetSpentPercent": 10.94,
-      "actualFunds": 1683224.83
+      "budgetRequestedMana": 0,
+      "actualSpendingMana": 0,
+      "actualFundsMana": 0
     }
   ],
   "grandTotal": {
     "id": "grand-total",
     "category": "Grand Total",
-    "budgetRequested": 5471389,
+    "budgetRequested": 4596389,
     "realSpending": 994676.79,
-    "totalBudgetForecasted": 3264910.52,
-    "availableFunds": 4476712.21,
+    "totalBudgetForecasted": 2389910.52,
+    "availableFunds": 3601712.21,
     "availableFundsPercent": 81.82,
     "budgetAllocation": 0,
     "budgetSpentPercent": 18.18,
-    "actualFunds": 4476712.21
+    "budgetRequestedMana": 0,
+    "actualSpendingMana": 0,
+    "actualFundsMana": 0
   }
 }
