@@ -13,8 +13,8 @@ import { writeDataFile } from '../lib/output.js';
 // Can be overridden via environment variables (e.g., in GitHub Actions)
 // SPREADSHEET_ID: The Google Sheets document ID
 // SHEET_GID: The sheet tab ID (0 = first sheet)
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID
-const SHEET_GID = process.env.SHEET_GID
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
+const SHEET_GID = process.env.SHEET_GID;
 const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=${SHEET_GID}`;
 
 interface BudgetCategory {
@@ -27,7 +27,9 @@ interface BudgetCategory {
   availableFundsPercent: number;
   budgetAllocation: number;
   budgetSpentPercent: number;
-  actualFunds: number;
+  budgetRequestedMana: number;
+  actualSpendingMana: number;
+  actualFundsMana: number;
 }
 
 interface DashboardData {
@@ -36,20 +38,23 @@ interface DashboardData {
   grandTotal: BudgetCategory | null;
 }
 
-function parseMoneyValue(value: string): number {
+function parseNumeric(value: string, stripPattern: RegExp): number {
   if (!value) return 0;
-  // Remove $, commas, and whitespace
-  const cleaned = value.replace(/[$,\s]/g, '');
-  const num = parseFloat(cleaned);
+  const num = parseFloat(value.replace(stripPattern, ''));
   return isNaN(num) ? 0 : num;
 }
 
+function parseMoneyValue(value: string): number {
+  return parseNumeric(value, /[$,\s]/g);
+}
+
+function parseManaValue(value: string): number {
+  // Handles formats like "$ MANA 1,923,076.92" and "$1,923,076.92"
+  return parseNumeric(value, /[$,\s]|MANA/gi);
+}
+
 function parsePercentValue(value: string): number {
-  if (!value) return 0;
-  // Remove % and whitespace
-  const cleaned = value.replace(/[%\s]/g, '');
-  const num = parseFloat(cleaned);
-  return isNaN(num) ? 0 : num;
+  return parseNumeric(value, /[%\s]/g);
 }
 
 function parseCSVLine(line: string): string[] {
@@ -76,7 +81,7 @@ function rowToBudgetCategory(row: string[]): BudgetCategory {
   // Column mapping:
   // A=id, B=category, C=budgetRequested, D=realSpending, E=totalBudgetForecasted,
   // F=SKIP (Total Budget committed), G=availableFunds, H=availableFundsPercent,
-  // I=budgetAllocation, J=budgetSpentPercent, K=actualFunds
+  // I=budgetAllocation, J=budgetSpentPercent, K=budgetRequestedMana, L=actualSpendingMana, M=actualFundsMana
   return {
     id: row[0] || '',
     category: row[1] || '',
@@ -88,12 +93,14 @@ function rowToBudgetCategory(row: string[]): BudgetCategory {
     availableFundsPercent: parsePercentValue(row[7]),
     budgetAllocation: parsePercentValue(row[8]),
     budgetSpentPercent: parsePercentValue(row[9]),
-    actualFunds: parseMoneyValue(row[10]),
+    budgetRequestedMana: parseManaValue(row[10]),
+    actualSpendingMana: parseManaValue(row[11]),
+    actualFundsMana: parseManaValue(row[12]),
   };
 }
 
 async function fetchDashboardData(): Promise<DashboardData> {
-  if (!SPREADSHEET_ID) throw new Error('Invalid spreadsheet id')
+  if (!SPREADSHEET_ID) throw new Error('Missing SPREADSHEET_ID environment variable');
   const response = await fetch(SHEET_CSV_URL, {
     redirect: 'follow',
   });

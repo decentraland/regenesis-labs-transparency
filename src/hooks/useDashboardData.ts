@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-const DASHBOARD_URL = 'https://decentraland.github.io/regenesis-labs-transparency/dashboard-data.json';
+const DASHBOARD_URL = import.meta.env.DEV
+  ? '/dashboard-data.json'
+  : 'https://decentraland.github.io/regenesis-labs-transparency/dashboard-data.json';
 
 export interface BudgetCategory {
   id: string;
@@ -12,7 +14,9 @@ export interface BudgetCategory {
   availableFundsPercent: number;
   budgetAllocation: number;
   budgetSpentPercent: number;
-  actualFunds: number;
+  budgetRequestedMana: number;
+  actualSpendingMana: number;
+  actualFundsMana: number;
 }
 
 export interface DashboardData {
