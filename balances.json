@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-15T15:11:25.471Z",
+  "timestamp": "2026-03-16T15:29:48.369Z",
   "wallets": [
     {
       "address": "0x5613eC65db405FD33613c3620AA8B15BBC888E4B",
@@ -10,24 +10,24 @@
           "address": "native",
           "balance": "19380070211440806",
           "balanceFormatted": "0.019380070211440806",
-          "usdPrice": 2093.86,
-          "usdValue": 40.58
+          "usdPrice": 2290.35,
+          "usdValue": 44.39
         },
         {
           "symbol": "USDC",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "1184917611",
           "balanceFormatted": "1184.917611",
-          "usdPrice": 0.999953,
-          "usdValue": 1184.86
+          "usdPrice": 0.999943,
+          "usdValue": 1184.85
         },
         {
           "symbol": "MANA",
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "44984040816326530612247",
           "balanceFormatted": "44984.040816326530612247",
-          "usdPrice": 0.091581,
-          "usdValue": 4119.68
+          "usdPrice": 0.094922,
+          "usdValue": 4269.98
         }
       ],
       "defi": {
@@ -36,27 +36,27 @@
             "marketId": "0x777791c4d6dc2ce140d00d2828a7c93503c67777",
             "marketName": "Hyperithm USDC",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "65574926382",
-            "supplyAssetsFormatted": "65574.926382",
+            "supplyAssets": "65583379405",
+            "supplyAssetsFormatted": "65583.379405",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "60914787359124666239084",
             "collateralFormatted": "60914.787359124666239084",
-            "netValue": 65574.926382,
-            "usdValue": 65574.926382
+            "netValue": 65583.379405,
+            "usdValue": 65583.379405
           }
         ],
         "merklRewards": [
           {
             "token": "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
             "symbol": "MORPHO",
-            "amount": "203187629631802602275",
-            "amountFormatted": "203.187629631802602275",
-            "usdValue": 374.8
+            "amount": "203403783408843752397",
+            "amountFormatted": "203.403783408843752397",
+            "usdValue": 383.47
           }
         ]
       },
-      "totalUsdValue": 71294.85
+      "totalUsdValue": 71466.07
     },
     {
       "address": "0x93accd5b8aee795c6efcfdedfe4a292e59e00e84",
@@ -67,8 +67,8 @@
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "9722879090",
           "balanceFormatted": "9722.87909",
-          "usdPrice": 0.999953,
-          "usdValue": 9722.42
+          "usdPrice": 0.999943,
+          "usdValue": 9722.32
         },
         {
           "symbol": "USDT",
@@ -83,8 +83,8 @@
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "13180517000000000000000024",
           "balanceFormatted": "13180517.000000000000000024",
-          "usdPrice": 0.091581,
-          "usdValue": 1207084.93
+          "usdPrice": 0.094922,
+          "usdValue": 1251121.03
         }
       ],
       "defi": {
@@ -93,93 +93,93 @@
             "marketId": "0xbeef01735c132ada46aa9aa4c54623caa92a64cb",
             "marketName": "Steakhouse USDC",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "352441800842",
-            "supplyAssetsFormatted": "352441.800842",
+            "supplyAssets": "352466419370",
+            "supplyAssetsFormatted": "352466.41937",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "314602873881035680741615",
             "collateralFormatted": "314602.873881035680741615",
-            "netValue": 352441.800842,
-            "usdValue": 352441.800842
+            "netValue": 352466.41937,
+            "usdValue": 352466.41937
           },
           {
             "marketId": "0xbeefff209270748ddd194831b3fa287a5386f5bc",
             "marketName": "Smokehouse USDC",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "351254569408",
-            "supplyAssetsFormatted": "351254.569408",
+            "supplyAssets": "351295496953",
+            "supplyAssetsFormatted": "351295.496953",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "319475427810338340145550",
             "collateralFormatted": "319475.42781033834014555",
-            "netValue": 351254.569408,
-            "usdValue": 351254.569408
+            "netValue": 351295.496953,
+            "usdValue": 351295.496953
           },
           {
             "marketId": "0xa0804346780b4c2e3be118ac957d1db82f9d7484",
             "marketName": "Smokehouse USDT",
             "underlyingSymbol": "USDT",
-            "supplyAssets": "411983281514",
-            "supplyAssetsFormatted": "411983.281514",
+            "supplyAssets": "412016591931",
+            "supplyAssetsFormatted": "412016.591931",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "384456524301896948702955",
             "collateralFormatted": "384456.524301896948702955",
-            "netValue": 411983.281514,
-            "usdValue": 411983.281514
+            "netValue": 412016.591931,
+            "usdValue": 412016.591931
           },
           {
             "marketId": "0xdd0f28e19c1780eb6396170735d45153d261490d",
             "marketName": "Gauntlet USDC Prime",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "271996616782",
-            "supplyAssetsFormatted": "271996.616782",
+            "supplyAssets": "272015661541",
+            "supplyAssetsFormatted": "272015.661541",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "244985969949984151094473",
             "collateralFormatted": "244985.969949984151094473",
-            "netValue": 271996.616782,
-            "usdValue": 271996.616782
+            "netValue": 272015.661541,
+            "usdValue": 272015.661541
           },
           {
             "marketId": "0xc582f04d8a82795aa2ff9c8bb4c1c889fe7b754e",
             "marketName": "Gauntlet USDC Frontier",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "222184548951",
-            "supplyAssetsFormatted": "222184.548951",
+            "supplyAssets": "222207825581",
+            "supplyAssetsFormatted": "222207.825581",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "206815455280511874734842",
             "collateralFormatted": "206815.455280511874734842",
-            "netValue": 222184.548951,
-            "usdValue": 222184.548951
+            "netValue": 222207.825581,
+            "usdValue": 222207.825581
           },
           {
             "marketId": "0x79fd640000f8563a866322483524a4b48f1ed702",
             "marketName": "Gauntlet USDT Frontier",
             "underlyingSymbol": "USDT",
-            "supplyAssets": "290333417290",
-            "supplyAssetsFormatted": "290333.41729",
+            "supplyAssets": "290367991640",
+            "supplyAssetsFormatted": "290367.99164",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "279600597884401902394331",
             "collateralFormatted": "279600.597884401902394331",
-            "netValue": 290333.41729,
-            "usdValue": 290333.41729
+            "netValue": 290367.99164,
+            "usdValue": 290367.99164
           }
         ],
         "merklRewards": [
           {
             "token": "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
             "symbol": "MORPHO",
-            "amount": "2194916693881419171965",
-            "amountFormatted": "2194.916693881419171965",
-            "usdValue": 4048.72
+            "amount": "2202554125832480460944",
+            "amountFormatted": "2202.554125832480460944",
+            "usdValue": 4152.43
           }
         ]
       },
-      "totalUsdValue": 3280352.24
+      "totalUsdValue": 3324667.71
     }
   ],
-  "totalPortfolioValue": 3351647.09
+  "totalPortfolioValue": 3396133.78
 }
