@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13T15:35:49.683Z",
+  "lastUpdated": "2026-04-14T15:31:51.484Z",
   "items": [
     {
       "id": 1,
@@ -21,19 +21,19 @@
     },
     {
       "id": 3,
-      "emoji": "🪬",
-      "title": "Develop VR & Mobile Client Ecosystem (Setup)",
-      "status": "done",
-      "progress": 100,
+      "emoji": "⛵",
+      "title": "Transparency reports",
+      "status": "in-progress",
+      "progress": 40,
       "priority": "High",
       "phase": "Phase 1 – Execution Capacity"
     },
     {
       "id": 4,
-      "emoji": "⛵",
-      "title": "Transparency reports",
-      "status": "in-progress",
-      "progress": 40,
+      "emoji": "🪬",
+      "title": "Develop VR & Mobile Client Ecosystem (Setup)",
+      "status": "done",
+      "progress": 100,
       "priority": "High",
       "phase": "Phase 1 – Execution Capacity"
     },
@@ -57,11 +57,11 @@
     },
     {
       "id": 7,
-      "emoji": "📌",
-      "title": "Fix Empty LAND Problem (Pilot)",
-      "status": "not-started",
-      "progress": 0,
-      "priority": "Medium",
+      "emoji": "🎁",
+      "title": "Thematic Hackathons",
+      "status": "in-progress",
+      "progress": 25,
+      "priority": "High",
       "phase": "Phase 3 – Experiences & Content"
     },
     {
@@ -94,7 +94,7 @@
     {
       "id": 11,
       "emoji": "📌",
-      "title": "Expand Decentraland Creators Reward Program",
+      "title": "Fix Empty LAND Problem (Pilot)",
       "status": "not-started",
       "progress": 0,
       "priority": "Medium",
@@ -102,17 +102,17 @@
     },
     {
       "id": 12,
-      "emoji": "🎁",
-      "title": "Thematic Hackathons",
-      "status": "in-progress",
-      "progress": 25,
-      "priority": "High",
+      "emoji": "📌",
+      "title": "Expand Decentraland Creators Reward Program",
+      "status": "not-started",
+      "progress": 0,
+      "priority": "Medium",
       "phase": "Phase 3 – Experiences & Content"
     },
     {
       "id": 13,
       "emoji": "📌",
-      "title": "AI-Driven Guided Tour",
+      "title": "Events for New Audiences",
       "status": "not-started",
       "progress": 0,
       "priority": "Below the line",
@@ -120,8 +120,8 @@
     },
     {
       "id": 14,
-      "emoji": "📌",
-      "title": "Events for New Audiences",
+      "emoji": "🏝️",
+      "title": "Incentive Program for Active LAND",
       "status": "not-started",
       "progress": 0,
       "priority": "Below the line",
@@ -138,8 +138,8 @@
     },
     {
       "id": 16,
-      "emoji": "🏝️",
-      "title": "Incentive Program for Active LAND",
+      "emoji": "📌",
+      "title": "AI-Driven Guided Tour",
       "status": "not-started",
       "progress": 0,
       "priority": "Below the line",
