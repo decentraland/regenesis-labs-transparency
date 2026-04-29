@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-28T15:53:52.706Z",
+  "lastUpdated": "2026-04-29T15:45:17.235Z",
   "items": [
     {
       "id": 1,
@@ -42,7 +42,7 @@
       "emoji": "📱",
       "title": "Decentraland Mobile Client V01",
       "status": "in-progress",
-      "progress": 67,
+      "progress": 100,
       "priority": "High",
       "phase": "Phase 2 – First Outputs"
     },
