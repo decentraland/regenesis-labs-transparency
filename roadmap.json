@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-06T16:09:49.187Z",
+  "lastUpdated": "2026-07-07T15:55:28.054Z",
   "items": [
     {
       "id": 1,
@@ -24,7 +24,7 @@
       "emoji": "⛵",
       "title": "Transparency reports",
       "status": "in-progress",
-      "progress": 40,
+      "progress": 60,
       "priority": "High",
       "phase": "Phase 1 – Execution Capacity"
     },
@@ -50,7 +50,7 @@
       "id": 6,
       "emoji": "📱",
       "title": "Decentraland Mobile Client V01",
-      "status": "in-progress",
+      "status": "done",
       "progress": 100,
       "priority": "High",
       "phase": "Phase 2 – First Outputs"
@@ -96,7 +96,7 @@
       "emoji": "⚾",
       "title": "Grants Program",
       "status": "in-progress",
-      "progress": 40,
+      "progress": 60,
       "priority": "Medium",
       "phase": "Phase 3 – Experiences & Content"
     },
