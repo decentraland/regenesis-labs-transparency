@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-03T16:25:48.609Z",
+  "timestamp": "2026-10-04T16:29:24.291Z",
   "wallets": [
     {
       "address": "0x5613eC65db405FD33613c3620AA8B15BBC888E4B",
@@ -10,32 +10,32 @@
           "address": "native",
           "balance": "19380070211440806",
           "balanceFormatted": "0.019380070211440806",
-          "usdPrice": 2678.58,
-          "usdValue": 51.91
+          "usdPrice": 2697.51,
+          "usdValue": 52.28
         },
         {
           "symbol": "USDC",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "27233433104",
           "balanceFormatted": "27233.433104",
-          "usdPrice": 0.999983,
-          "usdValue": 27232.97
+          "usdPrice": 0.999961,
+          "usdValue": 27232.37
         },
         {
           "symbol": "USDT",
           "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
           "balance": "7500000000",
           "balanceFormatted": "7500",
-          "usdPrice": 0.999904,
-          "usdValue": 7499.28
+          "usdPrice": 0.999893,
+          "usdValue": 7499.2
         },
         {
           "symbol": "MANA",
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "1238350098516846856813593",
           "balanceFormatted": "1238350.098516846856813593",
-          "usdPrice": 0.104188,
-          "usdValue": 129021.22
+          "usdPrice": 0.104439,
+          "usdValue": 129332.05
         }
       ],
       "defi": {
@@ -46,11 +46,11 @@
             "symbol": "MORPHO",
             "amount": "77408404507719590713",
             "amountFormatted": "77.408404507719590713",
-            "usdValue": 209.97
+            "usdValue": 210.25
           }
         ]
       },
-      "totalUsdValue": 164015.35
+      "totalUsdValue": 164326.15
     },
     {
       "address": "0x93accd5b8aee795c6efcfdedfe4a292e59e00e84",
@@ -61,7 +61,7 @@
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "450",
           "balanceFormatted": "0.00045",
-          "usdPrice": 0.999983,
+          "usdPrice": 0.999961,
           "usdValue": 0
         },
         {
@@ -69,8 +69,8 @@
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "10738209000000000000000024",
           "balanceFormatted": "10738209.000000000000000024",
-          "usdPrice": 0.104188,
-          "usdValue": 1118792.52
+          "usdPrice": 0.104439,
+          "usdValue": 1121487.81
         }
       ],
       "defi": {
@@ -81,12 +81,12 @@
             "symbol": "MORPHO",
             "amount": "2069534577527270265549",
             "amountFormatted": "2069.534577527270265549",
-            "usdValue": 5613.48
+            "usdValue": 5621.15
           }
         ]
       },
-      "totalUsdValue": 1124406
+      "totalUsdValue": 1127108.96
     }
   ],
-  "totalPortfolioValue": 1288421.35
+  "totalPortfolioValue": 1291435.11
 }
