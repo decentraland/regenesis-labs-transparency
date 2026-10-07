@@ -117,6 +117,20 @@ export const MORPHO_VAULTS = [
     underlyingSymbol: 'USDT',
     underlyingDecimals: 6,
   },
+  {
+    address: '0x8c106eedad96553e64287a5a6839c3cc78afa3d0',
+    name: 'Gauntlet USDC Prime V2',
+    symbol: 'gtUSDCp',
+    underlyingSymbol: 'USDC',
+    underlyingDecimals: 6,
+  },
+  {
+    address: '0xbeeff2c5bf38f90e3482a8b19f12e5a6d2fca757',
+    name: 'Steakhouse High Yield USDC V2',
+    symbol: 'bbqUSDC',
+    underlyingSymbol: 'USDC',
+    underlyingDecimals: 6,
+  },
 ];
 
 // ERC-4626 Vault ABI (only functions we need)
@@ -124,13 +138,6 @@ const ERC4626_ABI = [
   {
     inputs: [{ name: 'owner', type: 'address' }],
     name: 'balanceOf',
-    outputs: [{ name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [{ name: 'owner', type: 'address' }],
-    name: 'maxWithdraw',
     outputs: [{ name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -179,12 +186,12 @@ export async function getMorphoPositions(
       return positions;
     }
 
-    // Get asset values for vaults with balances using maxWithdraw
-    const assetCalls = vaultsWithBalances.map(({ vault }) => ({
+    // Not maxWithdraw: Morpho Vault V2 always returns 0 for it
+    const assetCalls = vaultsWithBalances.map(({ vault, shares }) => ({
       address: getAddress(vault.address) as `0x${string}`,
       abi: ERC4626_ABI,
-      functionName: 'maxWithdraw' as const,
-      args: [walletAddress] as const,
+      functionName: 'convertToAssets' as const,
+      args: [shares] as const,
     }));
 
     const assetResults = await client.multicall({ contracts: assetCalls });
