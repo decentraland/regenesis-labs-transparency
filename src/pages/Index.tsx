@@ -8,7 +8,14 @@ import { GrantsProgram } from "@/components/GrantsProgram";
 import { Roadmap } from "@/components/Roadmap";
 import { WalletCard } from "@/components/WalletCard";
 import { useBalanceData } from "@/hooks/useBalanceData";
-import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
+import { Wallet, TrendingUp, TrendingDown, ExternalLink } from "lucide-react";
+
+// Verbatim from the Specification of Governance proposal DAO:c9e5d8a (passed Nov 7, 2024).
+const DAO_MISSION =
+  "Ensure the sustainability of the Decentraland Ecosystem through representative governance, efficient management of collective resources, and technical innovation.";
+const DAO_MISSION_PROPOSAL_URL = "https://decentraland.org/governance/proposal/?id=923d0c82-7ba7-4c39-836a-17f959741b1a";
+const DAO_MISSION_DOCS_URL = "https://docs.decentraland.org/dao/dao/mission-vision-and-roles";
+const DAO_TRANSPARENCY_URL = "https://decentraland.org/governance/transparency/";
 
 const formatUsdValue = (value: number) => {
   if (value >= 1000000) {
@@ -46,6 +53,38 @@ const Index = () => {
         {/* Welcome Section */}
         <div className="mb-8 animate-fade-in">
           <p className="text-muted-foreground">Here you can check how DCL Regenesis Labs is allocating the funds.</p>
+          <p className="mt-3 max-w-3xl text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">Decentraland DAO mission:</span>{" "}
+            {DAO_MISSION}{" "}
+            <a
+              href={DAO_MISSION_PROPOSAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Approved proposal
+            </a>
+          </p>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            <a
+              href={DAO_MISSION_DOCS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-primary hover:underline"
+            >
+              <span>Mission, vision &amp; roles</span>
+              <ExternalLink className="h-3 w-3" />
+            </a>
+            <a
+              href={DAO_TRANSPARENCY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-primary hover:underline"
+            >
+              <span>DAO transparency</span>
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
         </div>
 
         <section id="treasury" className="scroll-mt-20">
