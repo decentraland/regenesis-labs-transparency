@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-09T15:15:43.982Z",
+  "timestamp": "2026-10-10T15:15:55.387Z",
   "wallets": [
     {
       "address": "0x5613eC65db405FD33613c3620AA8B15BBC888E4B",
@@ -10,24 +10,24 @@
           "address": "native",
           "balance": "2770849479654817597",
           "balanceFormatted": "2.770849479654817597",
-          "usdPrice": 2484.83,
-          "usdValue": 6885.09
+          "usdPrice": 2505.99,
+          "usdValue": 6943.72
         },
         {
           "symbol": "USDC",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "15492767999",
           "balanceFormatted": "15492.767999",
-          "usdPrice": 0.999597,
-          "usdValue": 15486.52
+          "usdPrice": 0.9997,
+          "usdValue": 15488.12
         },
         {
           "symbol": "MANA",
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "1238350098516846856813593",
           "balanceFormatted": "1238350.098516846856813593",
-          "usdPrice": 0.090519,
-          "usdValue": 112094.21
+          "usdPrice": 0.09502,
+          "usdValue": 117668.03
         }
       ],
       "defi": {
@@ -36,27 +36,27 @@
             "marketId": "0x8c106eedad96553e64287a5a6839c3cc78afa3d0",
             "marketName": "Gauntlet USDC Prime V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "155126743123",
-            "supplyAssetsFormatted": "155126.743123",
+            "supplyAssets": "155144839362",
+            "supplyAssetsFormatted": "155144.839362",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "149411493134466792867642",
             "collateralFormatted": "149411.493134466792867642",
-            "netValue": 155126.743123,
-            "usdValue": 155126.743123
+            "netValue": 155144.839362,
+            "usdValue": 155144.839362
           },
           {
             "marketId": "0xbeeff2c5bf38f90e3482a8b19f12e5a6d2fca757",
             "marketName": "Steakhouse High Yield USDC V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "155158213842",
-            "supplyAssetsFormatted": "155158.213842",
+            "supplyAssets": "155181342804",
+            "supplyAssetsFormatted": "155181.342804",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "147455913032844655062063",
             "collateralFormatted": "147455.913032844655062063",
-            "netValue": 155158.213842,
-            "usdValue": 155158.213842
+            "netValue": 155181.342804,
+            "usdValue": 155181.342804
           }
         ],
         "merklRewards": [
@@ -65,11 +65,11 @@
             "symbol": "MORPHO",
             "amount": "77408404507719590713",
             "amountFormatted": "77.408404507719590713",
-            "usdValue": 186.98
+            "usdValue": 185.79
           }
         ]
       },
-      "totalUsdValue": 444937.76
+      "totalUsdValue": 450611.84
     },
     {
       "address": "0x93accd5b8aee795c6efcfdedfe4a292e59e00e84",
@@ -80,7 +80,7 @@
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "450",
           "balanceFormatted": "0.00045",
-          "usdPrice": 0.999597,
+          "usdPrice": 0.9997,
           "usdValue": 0
         },
         {
@@ -88,8 +88,8 @@
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "10738209000000000000000024",
           "balanceFormatted": "10738209.000000000000000024",
-          "usdPrice": 0.090519,
-          "usdValue": 972011.94
+          "usdPrice": 0.09502,
+          "usdValue": 1020344.62
         }
       ],
       "defi": {
@@ -98,48 +98,48 @@
             "marketId": "0x8c106eedad96553e64287a5a6839c3cc78afa3d0",
             "marketName": "Gauntlet USDC Prime V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "277777381326",
-            "supplyAssetsFormatted": "277777.381326",
+            "supplyAssets": "277809785320",
+            "supplyAssetsFormatted": "277809.78532",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "267543380770103245256483",
             "collateralFormatted": "267543.380770103245256483",
-            "netValue": 277777.381326,
-            "usdValue": 277777.381326
+            "netValue": 277809.78532,
+            "usdValue": 277809.78532
           },
           {
             "marketId": "0xbeeff2c5bf38f90e3482a8b19f12e5a6d2fca757",
             "marketName": "Steakhouse High Yield USDC V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "361489222469",
-            "supplyAssetsFormatted": "361489.222469",
+            "supplyAssets": "361543108565",
+            "supplyAssetsFormatted": "361543.108565",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "343544321829122508646638",
             "collateralFormatted": "343544.321829122508646638",
-            "netValue": 361489.222469,
-            "usdValue": 361489.222469
+            "netValue": 361543.108565,
+            "usdValue": 361543.108565
           }
         ],
         "merklRewards": [
           {
             "token": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
             "symbol": "USDC",
-            "amount": "42994",
-            "amountFormatted": "0.042994",
-            "usdValue": 0.04
+            "amount": "87876",
+            "amountFormatted": "0.087876",
+            "usdValue": 0.09
           },
           {
             "token": "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
             "symbol": "MORPHO",
             "amount": "2069534577527270265549",
             "amountFormatted": "2069.534577527270265549",
-            "usdValue": 4999
+            "usdValue": 4967.14
           }
         ]
       },
-      "totalUsdValue": 1616277.58
+      "totalUsdValue": 1664664.74
     }
   ],
-  "totalPortfolioValue": 2061215.34
+  "totalPortfolioValue": 2115276.58
 }
