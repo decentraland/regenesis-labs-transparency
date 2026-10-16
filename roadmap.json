@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-10-15T15:16:14.526Z",
+  "lastUpdated": "2026-10-16T15:14:52.789Z",
   "items": [
     {
       "id": 1,
       "emoji": "👛",
       "title": "Deploy DAO Treasury Strategy",
-      "status": "in-progress",
-      "progress": 67,
+      "status": "done",
+      "progress": 100,
       "priority": "High",
       "phase": "Phase 0 - Foundations"
     },
@@ -24,7 +24,7 @@
       "emoji": "⛵",
       "title": "Transparency reports",
       "status": "in-progress",
-      "progress": 60,
+      "progress": 80,
       "priority": "High",
       "phase": "Phase 1 – Execution Capacity"
     },
@@ -60,7 +60,7 @@
       "emoji": "🎁",
       "title": "Thematic Hackathons",
       "status": "in-progress",
-      "progress": 33,
+      "progress": 67,
       "priority": "High",
       "phase": "Phase 3 – Experiences & Content"
     },
@@ -96,7 +96,7 @@
       "emoji": "⚾",
       "title": "Grants Program",
       "status": "in-progress",
-      "progress": 60,
+      "progress": 80,
       "priority": "Medium",
       "phase": "Phase 3 – Experiences & Content"
     },
@@ -105,7 +105,7 @@
       "emoji": "🕹️",
       "title": "Deploy Multiplayer Game",
       "status": "in-progress",
-      "progress": 0,
+      "progress": 100,
       "priority": "Medium",
       "phase": "Phase 3 – Experiences & Content"
     },
@@ -150,7 +150,7 @@
       "emoji": "🌐",
       "title": "Bevy Web Client",
       "status": "in-progress",
-      "progress": 25,
+      "progress": 75,
       "priority": "High"
     }
   ]
