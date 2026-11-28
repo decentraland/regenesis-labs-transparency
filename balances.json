@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-27T15:09:19.842Z",
+  "timestamp": "2026-11-28T15:08:20.437Z",
   "wallets": [
     {
       "address": "0x5613eC65db405FD33613c3620AA8B15BBC888E4B",
@@ -10,24 +10,24 @@
           "address": "native",
           "balance": "2770849479654817597",
           "balanceFormatted": "2.770849479654817597",
-          "usdPrice": 1640.68,
-          "usdValue": 4546.08
+          "usdPrice": 1646.68,
+          "usdValue": 4562.7
         },
         {
           "symbol": "USDC",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "balance": "106568190646",
-          "balanceFormatted": "106568.190646",
-          "usdPrice": 0.999675,
-          "usdValue": 106533.56
+          "balance": "80574949603",
+          "balanceFormatted": "80574.949603",
+          "usdPrice": 0.999825,
+          "usdValue": 80560.85
         },
         {
           "symbol": "MANA",
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "1210350098516846856813593",
           "balanceFormatted": "1210350.098516846856813593",
-          "usdPrice": 0.056685,
-          "usdValue": 68608.7
+          "usdPrice": 0.055866,
+          "usdValue": 67617.42
         },
         {
           "symbol": "MORPHO",
@@ -42,7 +42,7 @@
         "morpho": [],
         "merklRewards": []
       },
-      "totalUsdValue": 180053.26
+      "totalUsdValue": 153105.89
     },
     {
       "address": "0x93accd5b8aee795c6efcfdedfe4a292e59e00e84",
@@ -53,7 +53,7 @@
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "balance": "450",
           "balanceFormatted": "0.00045",
-          "usdPrice": 0.999675,
+          "usdPrice": 0.999825,
           "usdValue": 0
         },
         {
@@ -61,8 +61,8 @@
           "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
           "balance": "10738209000000000000000024",
           "balanceFormatted": "10738209.000000000000000024",
-          "usdPrice": 0.056685,
-          "usdValue": 608695.38
+          "usdPrice": 0.055866,
+          "usdValue": 599900.78
         }
       ],
       "defi": {
@@ -71,41 +71,41 @@
             "marketId": "0x8c106eedad96553e64287a5a6839c3cc78afa3d0",
             "marketName": "Gauntlet USDC Prime V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "279411895207",
-            "supplyAssetsFormatted": "279411.895207",
+            "supplyAssets": "279435743917",
+            "supplyAssetsFormatted": "279435.743917",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "267543380770103245256483",
             "collateralFormatted": "267543.380770103245256483",
-            "netValue": 279411.895207,
-            "usdValue": 279411.895207
+            "netValue": 279435.743917,
+            "usdValue": 279435.743917
           },
           {
             "marketId": "0xbeeff2c5bf38f90e3482a8b19f12e5a6d2fca757",
             "marketName": "Steakhouse High Yield USDC V2",
             "underlyingSymbol": "USDC",
-            "supplyAssets": "364501470439",
-            "supplyAssetsFormatted": "364501.470439",
+            "supplyAssets": "364559067325",
+            "supplyAssetsFormatted": "364559.067325",
             "borrowAssets": "0",
             "borrowAssetsFormatted": "0",
             "collateral": "343544321829122508646638",
             "collateralFormatted": "343544.321829122508646638",
-            "netValue": 364501.470439,
-            "usdValue": 364501.470439
+            "netValue": 364559.067325,
+            "usdValue": 364559.067325
           }
         ],
         "merklRewards": [
           {
             "token": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
             "symbol": "USDC",
-            "amount": "16960477",
-            "amountFormatted": "16.960477",
-            "usdValue": 16.96
+            "amount": "17320608",
+            "amountFormatted": "17.320608",
+            "usdValue": 17.32
           }
         ]
       },
-      "totalUsdValue": 1252625.71
+      "totalUsdValue": 1243912.91
     }
   ],
-  "totalPortfolioValue": 1432678.97
+  "totalPortfolioValue": 1397018.8
 }
